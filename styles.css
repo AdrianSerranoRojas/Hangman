@@ -1,19 +1,30 @@
+@media only screen and (min-width: 500px) {
+    #display-big {
+        width: 55% !important;
+    }
+    #display-small{
+        width: 40% !important;
+    }
+}
+
+
 body {
     background-color: grey;
+    margin: 0;
 }
 
 #display-main{
-    display: grid;
-    grid-template-columns: 70% 30%;
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 5%;
     margin: 0px 80px;
 }
 #display-big {
     background-color: white;
     height: 550px;
     width: 100%;
-    margin: auto;
-    margin-top: 220px ;
     text-align: center;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -23,8 +34,6 @@ body {
     background-color: white;
     height: 550px;
     width: 100%;
-    margin: auto;
-    margin-top: 220px ;
     text-align: center;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
