@@ -1,7 +1,8 @@
 body {
     background-color: grey;
-}
 
+/* Structure Page*/
+}
 #display-main{
     display: grid;
     grid-template-columns: 70% 30%;
@@ -29,4 +30,18 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+}
+@media only screen and (max-width: 900px) {
+    #display-main{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        margin: 0px 40px;
+    }
+    #display-big{
+        margin-top: 20px
+    }
+    #display-small{
+        margin-top: 20px ;
+    }
 }
