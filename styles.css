@@ -1,6 +1,32 @@
 body {
     background-color: grey;
 }
-#display-main {
+
+#display-main{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 40px;
+    margin: 0px 80px;
+}
+#display-big {
     background-color: white;
+    height: 550px;
+    width: 100%;
+    margin: auto;
+    margin-top: 220px ;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#display-small{
+    background-color: white;
+    height: 550px;
+    width: 100%;
+    margin: auto;
+    margin-top: 220px ;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
