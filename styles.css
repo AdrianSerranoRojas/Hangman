@@ -45,3 +45,21 @@ body {
         margin-top: 20px ;
     }
 }
+
+/*Game Page*/
+
+#all-buttons {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-row: repeat(3, 1fr);
+    grid-row: auto;
+}
+#all-buttons button {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    height: 40px;
+}
