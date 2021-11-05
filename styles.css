@@ -1,5 +1,15 @@
+:root {
+    --main-bg-color: #fff;
+    --main-text-color: rgb(60, 60, 60);
+    --secondary-text-color: rgb(120, 120, 120);
+    --main-color: rgb(115,155,224);
+    --main-color-opacity: rgb(115,155,224, 0.5);
+  }
+
+
 body {
     background-color: grey;
+    font-family: Arial, Helvetica, sans-serif;
 
 /* Structure Page*/
 }
@@ -10,6 +20,10 @@ body {
     margin: 0px 80px;
 }
 #display-big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: white;
     height: 550px;
     width: 100%;
@@ -44,4 +58,19 @@ body {
     #display-small{
         margin-top: 20px ;
     }
+}
+/* Choose a user name */
+#user-name{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+}
+#start-button{
+    height: 30px;
+    border: none;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border-radius: 5px;
+    font-weight: bolder;
 }
