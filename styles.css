@@ -2,8 +2,8 @@
     --main-bg-color: #fff;
     --main-text-color: rgb(60, 60, 60);
     --secondary-text-color: rgb(120, 120, 120);
-    --main-color: rgb(115,155,224);
-    --main-color-opacity: rgb(115,155,224, 0.5);
+    --main-color: rgb(180,180,180);
+    --main-color-opacity: rgb(180,180,180, 0.5);
 }
 
 
@@ -14,24 +14,33 @@ body {
 
 /* Choose a user name */
 #user-name-container{
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-#user-name{
+#user-name-input-container{
+    font-size: 1.2em;
     display: flex;
     flex-direction: column;
     text-align: left;
     gap: 10px;
 }
+#user-name-input{
+    height: 30px;
+    border: 3px solid var(--main-color);
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 1em;
+}
 #start-button{
     height: 30px;
-    border: none;
     color: var(--main-bg-color);
     background-color: var(--main-text-color);
     border-radius: 5px;
     font-weight: bolder;
+    font-size: 1em;
 }
 
 /* Structure Page*/
