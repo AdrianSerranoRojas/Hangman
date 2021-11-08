@@ -105,6 +105,15 @@ body {
     margin-right: 40px;
     font-size: 28px;
 }
+#display-big img {
+    height: 300px;
+}
+#letter-1 {
+    border-bottom: solid black 5px;
+    width: 15px;
+    font-size: 20px;
+    float: right;
+}
 
 /*Score Page*/
 #display-small h1 {
