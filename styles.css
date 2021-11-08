@@ -12,6 +12,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 /* Choose a user name */
+#user-name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 #user-name{
     display: flex;
     flex-direction: column;
@@ -35,10 +41,6 @@ body {
     margin: 0px 80px;
 }
 #display-big {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-color: white;
     height: 550px;
     width: 100%;
