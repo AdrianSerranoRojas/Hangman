@@ -11,7 +11,7 @@
 <body>
     <div id="display-main">
         <div id="display-big">
-            <div id="user-name-container">
+            <div id="user-name-container" class="show">
                 <div>
                     <h1>Choose a user name</h1>
                 </div>
@@ -24,14 +24,51 @@
                           <input type="radio" id="hard" name="difficulty" value="hard">
                           <label for="hard">Hard</label>
                     </form>
-                <div id="user-name-input-container">
-                    <div id="hms"></div>
-                    <label for="user-name">User name</label>
-                    <input type="text" id="user-name-input" name="user-name">
-                    <button id="start-button">Start</button>
-                    <button id="pause-button">Pause</button>
-                    <button id="reset-button">Reset</button>
+                    <div id="user-name-input-container">
+                        <div id="hms"></div>
+                        <label for="user-name">User name</label>
+                        <input type="text" id="user-name-input" name="user-name">
+                        <button id="start-button">Start</button>
+                        <button id="pause-button">Pause</button>
+                        <button id="reset-button">Reset</button>
+                    </div>
                 </div>
+            </div>
+            <div id="game-container" class="notShow">
+                <h2 id="title-guess">
+                    Guess the word
+                </h2>
+                <img src="assets/hangman - 1.png" alt="">
+                <div id="word-guess">
+                </div>
+                <div id="all-buttons">
+                    <button value="a">A</button>
+                    <button value="b">B</button>
+                    <button value="c">C</button>
+                    <button value="d">D</button>
+                    <button value="e">E</button>
+                    <button value="f">F</button>
+                    <button value="g">G</button>
+                    <button value="h">H</button>
+                    <button value="i">I</button>
+                    <button value="j">J</button>
+                    <button value="k">K</button>
+                    <button value="l">L</button>
+                    <button value="m">M</button>
+                    <button value="n">N</button>
+                    <button value="ñ">Ñ</button>
+                    <button value="o">O</button>
+                    <button value="p">P</button>
+                    <button value="q">Q</button>
+                    <button value="r">R</button>
+                    <button value="s">S</button>
+                    <button value="t">T</button>
+                    <button value="u">U</button>
+                    <button value="v">V</button>
+                    <button value="w">W</button>
+                    <button value="x">X</button>
+                    <button value="y">Y</button>
+                    <button value="z">Z</button>
                 </div>
             </div>
         </div>
@@ -51,49 +88,6 @@
             <h3>
                 25 seconds
             </h3>
-        </div>
-        <div id="display-big">
-            <h1 id="game-lost">
-                You Lost
-            </h1>
-            <h2 id="title-guess">
-                Guess the word
-            </h2>
-            <img src="assets/hangman - 1.png" alt="">
-            <div id="word-guess">
-            </div>
-            <div id="all-buttons">
-                <button>A</button>
-                <button>B</button>
-                <button>C</button>
-                <button>D</button>
-                <button>E</button>
-                <button>F</button>
-                <button>G</button>
-                <button>H</button>
-                <button>I</button>
-                <button>J</button>
-                <button>K</button>
-                <button>L</button>
-                <button>M</button>
-                <button>N</button>
-                <button>Ñ</button>
-                <button>O</button>
-                <button>P</button>
-                <button>Q</button>
-                <button>R</button>
-                <button>S</button>
-                <button>T</button>
-                <button>U</button>
-                <button>V</button>
-                <button>W</button>
-                <button>X</button>
-                <button>Y</button>
-                <button>Z</button>
-            </div>
-        </div>
-        <div id="display-small">
-            ADIOS
         </div>
         <div id="display-big">
             <h1 id="you-won">

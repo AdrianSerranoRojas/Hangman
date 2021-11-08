@@ -1,5 +1,8 @@
-//crono
+//crono + displays
 window.onload = init;
+
+var mainChoose = document.getElementById("user-name-container")
+var mainGame = document.getElementById("game-container")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",crono);
@@ -13,6 +16,8 @@ function init(){
 function crono(){
     writeSecs();
     id = setInterval(writeSecs,1000);
+    mainChoose.classList.add("notShow") //choose a user name page display none
+    mainGame.classList.remove("notShow") //game display block
     document.querySelector("#start-button").removeEventListener("click",crono);
 }
 function writeSecs(){
@@ -27,7 +32,6 @@ function writeSecs(){
     if (h<10){hAux="0"+h;}else{hAux=h;}
 
     document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux;
-    
 }
 function stop(){
     clearInterval(id);
@@ -40,6 +44,7 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",crono);
 }
+
 
 //random words
 
@@ -83,10 +88,14 @@ function gameHard() {
     wordGame = wordGame.textContent = (randomHard)
 }
 
+//string into letters
+
+
+
 // Add event buttons
 
-var allButtons = document.querySelectorAll("#all-buttons")
-console.log(allButtons)
+
+
 //Objects
 var userHistoric = [];
 //const HISTORIC_KEY = "myhistorickey";
