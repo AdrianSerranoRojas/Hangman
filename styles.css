@@ -1,3 +1,5 @@
+*{box-sizing:border-box;margin:0;padding:0;}
+
 :root {
     --main-bg-color: #fff;
     --main-text-color: rgb(60, 60, 60);
@@ -127,6 +129,10 @@ body {
     color: rgb(120, 120, 120);
     text-align: left;
     margin-left: 10%;
+}
+.ranking-time{
+    text-align: left;
+    padding-left: 25px;;
 }
 
 /*Play again Page*/

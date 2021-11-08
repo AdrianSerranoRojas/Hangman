@@ -111,8 +111,9 @@ function assignName(){
     userCrono=document.getElementById("hms").innerHTML;
     createUser(userNameV,userCrono);
     userHistoric.push(newUser);
+    printScore();
 }
-function createUser(name = "default", score = "defaultScore") {
+function createUser(name = "default", score = "Currently playing...") {
     console.log(userHistoric)
         newUser = {
         name: name,
@@ -121,9 +122,67 @@ function createUser(name = "default", score = "defaultScore") {
 }
 //const newUser = createUser();
 
+//RANKING
+
+let ranking1=document.querySelector("#ranking-1");
+let ranking2=document.querySelector("#ranking-2");
+let ranking3=document.querySelector("#ranking-3");
+let ranking4=document.querySelector("#ranking-4");
+
+let ranking1Time=document.querySelector("#ranking-1-time");
+let ranking2Time=document.querySelector("#ranking-2-time");
+let ranking3Time=document.querySelector("#ranking-3-time");
+let ranking4Time=document.querySelector("#ranking-4-time");
 
 
+function printScore(){
+    userScoreOr();
+    ranking1.innerText=userHistoric[0].name;
+    ranking1Time.innerText=userHistoric[0].score;
+    ranking2.innerText=userHistoric[1].name;
+    ranking2Time.innerText=userHistoric[1].score;
+    ranking3.innerText=userHistoric[2].name;
+    ranking3Time.innerText=userHistoric[2].score;
+    ranking4.innerText=userHistoric[3].name;
+    ranking4Time.innerText=userHistoric[3].score;
+}
 
 
 //userHistoric.push(newUser);
 
+//if (firstName.value == null || firstName.value.length==0|| /^\s+$/.test(firstName.value) ||!(/^[a-zA-Z\s]{0,20}$/.test(firstName.value)))
+
+// ordenar array
+
+userHistoric= [
+    {
+        name:"Adri" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Juan" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Pepe" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Pepe" ,
+        score:"10:00:00"
+    }
+]
+
+let  userHistoricOr;
+function userScoreOr(){
+    userHistoricOr = userHistoric.sort(function (a, b) {
+        if (a.score > b.score) {
+        return 1;
+        }
+        if (a.score < b.score) {
+        return -1;
+        }
+        // a must be equal to b
+        return 0;
+    });
+}
