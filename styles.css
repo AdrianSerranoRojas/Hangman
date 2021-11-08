@@ -72,26 +72,13 @@ body {
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
-@media only screen and (max-width: 900px) {
-    #display-main{
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 50% 50%;
-        margin: 0px 40px;
-    }
-    #display-big{
-        margin-top: 20px
-    }
-    #display-small{
-        margin-top: 20px ;
-    }
-}
+
 
 /*Game Page*/
 #all-buttons {
     display: grid;
     grid-template-columns: repeat(14, 1fr);
-    grid-row: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-row: auto;
 }
 #all-buttons button {
@@ -117,11 +104,13 @@ body {
 #display-big img {
     height: 300px;
 }
-#letter-1 {
+#word-guess {
     border-bottom: solid black 5px;
     width: 15px;
-    font-size: 20px;
+    font-size: 80px;
     float: right;
+    margin-right: 40%;
+    margin-top: 80px;
 }
 
 /*Score Page*/
@@ -155,4 +144,26 @@ body {
 }
 #you-lost {
     margin-top: 20%;
+}
+
+/* MEDIA */
+@media only screen and (max-width: 1100px) {
+    #display-main{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        margin: 0px 40px;
+    }
+    #display-big{
+        margin-top: 20px
+    }
+    #display-small{
+        margin-top: 20px ;
+    }
+    #all-buttons {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-row: auto;
+    }
 }

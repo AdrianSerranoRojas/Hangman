@@ -39,3 +39,50 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",crono);
 }
+
+//random words
+
+    //Easy
+var wordsEasy = ['Rock',
+    'King',
+    'Good'];
+var randomEasy = wordsEasy[Math.floor(Math.random()*wordsEasy.length)];
+
+    //Medium
+var wordsMedium = [
+    'Space',
+    'Mouse',
+    'Pasta'];
+var randomMedium = wordsMedium[Math.floor(Math.random()*wordsMedium.length)];
+
+    //Hard
+var wordsHard = [
+    'Nightmare',
+    'Keyboard',
+    'Potatoe'];
+var randomHard = wordsHard[Math.floor(Math.random()*wordsHard.length)];
+
+//Choose Difficulty
+var easyButton = document.getElementById("easy")
+var mediumButton = document.getElementById("medium")
+var hardButton = document.getElementById("hard")
+
+easyButton.addEventListener("click", gameEasy)
+mediumButton.addEventListener("click", gameMedium)
+hardButton.addEventListener("click", gameHard)
+
+var wordGame = document.getElementById("word-guess")
+function gameEasy() {
+    wordGame = wordGame.textContent = (randomEasy)
+}
+function gameMedium() {
+    wordGame = wordGame.textContent = (randomMedium)
+}
+function gameHard() {
+    wordGame = wordGame.textContent = (randomHard)
+}
+
+// Add event buttons
+
+var allButtons = document.querySelectorAll("#all-buttons")
+console.log(allButtons)
