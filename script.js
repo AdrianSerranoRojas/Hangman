@@ -26,7 +26,8 @@ function writeSecs(){
     if (m<10){mAux="0"+m;}else{mAux=m;}
     if (h<10){hAux="0"+h;}else{hAux=h;}
 
-    document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux; 
+    document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux;
+    
 }
 function stop(){
     clearInterval(id);
@@ -39,3 +40,35 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",crono);
 }
+
+//Objects
+var userHistoric = [];
+//const HISTORIC_KEY = "myhistorickey";
+
+
+const userName=document.querySelector("#user-name-input");
+let userNameV;
+let newUser;
+const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
+
+function assignName(){
+    userNameV=userName.value;
+    userCrono=document.getElementById("hms").innerHTML;
+    createUser(userNameV,userCrono);
+    userHistoric.push(newUser);
+}
+function createUser(name = "default", score = "defaultScore") {
+    console.log(userHistoric)
+        newUser = {
+        name: name,
+        score: score
+    };
+}
+//const newUser = createUser();
+
+
+
+
+
+//userHistoric.push(newUser);
+
