@@ -13,6 +13,12 @@ body {
     background-color: grey;
     font-family: Arial, Helvetica, sans-serif;
 }
+.hidden{
+    display:none;
+}
+.invisible{
+    visibility: hidden;
+}
 
 /* Choose a user name */
 #user-name-container{
@@ -113,6 +119,15 @@ body {
     float: right;
     margin-right: 40%;
     margin-top: 80px;
+}
+#word-split-container{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 80px;
+    float: right;
+    margin-right: 40%;
+    margin-top: 80px;
+    
 }
 
 /*Score Page*/

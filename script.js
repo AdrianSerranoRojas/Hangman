@@ -68,25 +68,93 @@ var easyButton = document.getElementById("easy")
 var mediumButton = document.getElementById("medium")
 var hardButton = document.getElementById("hard")
 
+
 easyButton.addEventListener("click", gameEasy)
 mediumButton.addEventListener("click", gameMedium)
 hardButton.addEventListener("click", gameHard)
 
 var wordGame = document.getElementById("word-guess")
+var wordSplit1 = document.getElementById("word-guess-1")
+var wordSplit2 = document.getElementById("word-guess-2")
+var wordSplit3 = document.getElementById("word-guess-3")
+var wordSplit4 = document.getElementById("word-guess-4")
+var wordSplit5 = document.getElementById("word-guess-5")
+
+var wordGame1="";
+let wordSplit;
 function gameEasy() {
-    wordGame = wordGame.textContent = (randomEasy)
+    wordGame.textContent = (randomEasy)
+    wordGame1 = wordGame.textContent
+    wordSplit = wordGame1.split("");
+    wordSplit1.textContent = wordSplit[0]
+    wordSplit2.textContent = wordSplit[1]
+    wordSplit3.textContent = wordSplit[2]
+    wordSplit4.textContent = wordSplit[3]
+    wordSplit5.textContent = wordSplit[4]
 }
 function gameMedium() {
-    wordGame = wordGame.textContent = (randomMedium)
+    wordGame.textContent = (randomMedium)
+    wordGame1=wordGame.textContent
+    wordSplit = wordGame1.split("");
 }
 function gameHard() {
-    wordGame = wordGame.textContent = (randomHard)
+    wordGame.textContent = (randomHard)
+    wordGame1=wordGame.textContent;
+    wordSplit = wordGame1.split("");
 }
 
-// Add event buttons
+//Buttons
 
-var allButtons = document.querySelectorAll("#all-buttons")
-console.log(allButtons)
+buttons = document.querySelectorAll("#all-buttons");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click",(e)=> {
+        buttonValue=e.target.innerText;
+        console.log(buttonValue)
+        console.log(wordGame1)
+        console.log(wordSplit)
+        for (i in wordSplit){
+            if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
+                console.log("YES")
+                e.target.classList.add("invisible");
+                switch (i) {
+                    case "0":
+                        wordSplit1.classList.remove("invisible");
+                        console.log(i);
+                        break;
+                    case "1":
+                        wordSplit2.classList.remove("invisible");
+                        console.log(i);
+                        break;
+                    case "2":
+                        wordSplit3.classList.remove("invisible");
+                        console.log(i);
+                        break;
+                    case "3":
+                        wordSplit4.classList.remove("invisible");
+                        console.log(i);
+                        break;
+                    case "4":
+                        wordSplit5.classList.remove("invisible");
+                        console.log(i);
+                        break;
+                    default:
+                        break;
+                }
+               // return; lo quito por si se repite la letra
+            }else{
+                console.log("NOOO")
+            }
+        }
+    })
+});
+//array de imagenes
+const hangmanPictures=document.querySelector("#hangman-pictures")
+let hangmanPicturesArray=["assets/hangman - 1.png","assets/hangman - 2.png"]
+hangmanPictures.src="assets/hangman - 1.png"
+
+
+
 //Objects
 var userHistoric = [];
 //const HISTORIC_KEY = "myhistorickey";
