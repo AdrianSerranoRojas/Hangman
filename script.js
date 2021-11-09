@@ -321,3 +321,50 @@ function userScoreOr(){
         return 0;
     });
 }
+
+
+
+// const HISTORIC_KEY = "historic";
+
+// let usersList = document.getElementById("historicList");
+// let btnAdd = document.getElementById("btnAdd");
+
+// let historicList = [];
+
+// window.onload = (e) => {
+//   initDOMRefs();
+//   historicList = [];
+
+//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
+//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
+//     updateList(historicList);
+//   }
+// };
+
+// function initDOMRefs() {
+//   usersList = document.getElementById("historicList");
+//   btnAdd = document.getElementById("btnAdd");
+//   btnAdd.addEventListener("click", (e) => {
+//     addNewUser();
+//   });
+// }
+
+// function createListElement({ username, score }) {
+//   const newListItem = document.createElement("li");
+//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
+//   usersList.appendChild(newListItem);
+// }
+
+// function updateList(items) {
+//   usersList.innerHTML = null;
+//   items.forEach((i) => {
+//     createListElement({ username: i.username, score: i.score });
+//   });
+// }
+
+// function addNewUser() {
+//   const newUser = { username: "John", score: 100 };
+//   historicList.push(newUser);
+//   updateList(historicList);
+//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
+// }
