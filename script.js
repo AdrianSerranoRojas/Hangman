@@ -117,7 +117,17 @@ function gameHard() {
     wordSplit4.textContent = wordSplit[3]
     wordSplit5.textContent = wordSplit[4]
 }
-
+//counter to win or loose
+let counterWin = 0;
+function WinOrLooseFun(){
+    if(counterWin>=wordSplit.length){
+        console.log("ganaste!!!")
+    }
+    if(contadorI>=6){
+        console.log("perdiste!!!")
+    }
+    return;
+}
 //Buttons
 
 buttons = document.querySelectorAll("#all-buttons");
@@ -128,6 +138,7 @@ buttons.forEach(btn => {
         console.log(wordSplit)
         if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
             //hangmanPictures.src=hangmanPicturesSrc;
+            counterWin++;
             e.target.classList.add("invisible");
             console.log("yes")
             for (i in wordSplit){
@@ -160,6 +171,7 @@ buttons.forEach(btn => {
             hangmanPicturesArraySum()
             hangmanPictures.src=hangmanPicturesSrc;
         }
+        WinOrLooseFun()
     })
 });
 //array de imagenes
