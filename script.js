@@ -74,6 +74,17 @@ var userHistoric = [];
 //const HISTORIC_KEY = "myhistorickey";
 
 
+//clear history
+let clearHistory = document.getElementById("clear-button")
+clearHistory.addEventListener("click", historyClearing)
+
+function historyClearing(){
+    localStorage.clear()
+    useruser()
+    printScore()
+}
+
+
 const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
@@ -128,6 +139,7 @@ function printScore(){
 
 // ordenar array
 
+function useruser() {
 userHistoric= [
     {
         name:"Adri" ,
@@ -146,6 +158,7 @@ userHistoric= [
         score:"10:00:00"
     }
 ]
+}
 
 let  userHistoricOr;
 function userScoreOr(){

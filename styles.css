@@ -209,6 +209,20 @@ form{
 #you-lost {
     margin-top: 20%;
 }
+#clear-button {
+    margin-top: 30%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 40px;
+    width: 60px;
+}
+#clear-button:hover {
+    margin-top: 30%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 40px;
+    width: 60px;
+}
 
 /* show / not show */
 .show {
