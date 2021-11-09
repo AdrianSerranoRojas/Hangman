@@ -1,5 +1,8 @@
-//crono
+//crono + displays
 window.onload = init;
+
+var mainChoose = document.getElementById("user-name-container")
+var mainGame = document.getElementById("game-container")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",crono);
@@ -13,6 +16,8 @@ function init(){
 function crono(){
     writeSecs();
     id = setInterval(writeSecs,1000);
+    mainChoose.classList.add("notShow") //choose a user name page display none
+    mainGame.classList.remove("notShow") //game display block
     document.querySelector("#start-button").removeEventListener("click",crono);
 }
 function writeSecs(){
@@ -39,6 +44,7 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",crono);
 }
+
 
 //random words
 

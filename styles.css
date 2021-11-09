@@ -113,12 +113,11 @@ body {
     height: 300px;
 }
 #word-guess {
-    border-bottom: solid black 5px;
-    width: 15px;
+    border-bottom: dashed black 19.9px;
     font-size: 80px;
     float: right;
-    margin-right: 40%;
-    margin-top: 80px;
+    margin-right: 150px;
+    margin-top: 120px;
 }
 #word-split-container{
     display: flex;
@@ -166,6 +165,15 @@ body {
 #you-lost {
     margin-top: 20%;
 }
+
+/* show / not show */
+.show {
+    display: block;
+}
+.notShow {
+    display: none !important;
+}
+
 
 /* MEDIA */
 @media only screen and (max-width: 1100px) {
