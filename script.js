@@ -14,11 +14,15 @@ function init(){
     m = 0;
     s = 0;
     document.getElementById("hms").innerHTML="00:00:00";
-    printScore();
 
     if (localStorage.getItem(HISTORIC_KEY) !== null) {
         userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
         console.log("YES");
+        console.log(userHistoric)
+        printScore();
+        }
+        else{
+            console.log("NO!")
         }
 }
 //
@@ -80,6 +84,7 @@ function assignName(){
     userCrono=document.getElementById("hms").innerHTML;
     createUser(userNameV,userCrono);
     userHistoric.push(newUser);
+    localStorage.setItem(HISTORIC_KEY, JSON.stringify(userHistoric));
     printScore();
 }
 function createUser(name = "default", score = "Currently playing...") {
