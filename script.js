@@ -16,8 +16,8 @@ function init(){
 function crono(){
     writeSecs();
     id = setInterval(writeSecs,1000);
-    mainChoose.classList.add("notSho") //choose a user name page display none
-    mainGame.classList.remove("notSho") //game display block
+    mainChoose.classList.add("notShow") //choose a user name page display none
+    mainGame.classList.remove("notShow") //game display block
     document.querySelector("#start-button").removeEventListener("click",crono);
 }
 function writeSecs(){

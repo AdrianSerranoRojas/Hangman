@@ -131,6 +131,7 @@ body {
     border-bottom: 5px solid black;
     margin: 5px;
     text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
 }
 /*Score Page*/
 #display-small h1 {

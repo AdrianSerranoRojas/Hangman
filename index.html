@@ -35,41 +35,94 @@
                 </div>
             </div>
             <div id="game-container" class="notShow">
+                <h1 id="game-lost">
+                    You Lost
+                </h1>
                 <h2 id="title-guess">
                     Guess the word
                 </h2>
-                <img src="assets/hangman - 1.png" alt="">
-                <div id="word-guess">
+                <img src="" alt="" id="hangman-pictures">
+                <div id="word-guess" class="hidden">
+                </div>
+                    <div id="word-split-container">
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-1">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-2">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-3">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-4">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-5">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-6">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-7">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-8">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-9">
+                    </div>
+                    </div>
+                    <div class="underline"><div class="word-guess-c invisible" id="word-guess-10">
+                    </div>
+                    </div>
                 </div>
                 <div id="all-buttons">
-                    <button value="a">A</button>
-                    <button value="b">B</button>
-                    <button value="c">C</button>
-                    <button value="d">D</button>
-                    <button value="e">E</button>
-                    <button value="f">F</button>
-                    <button value="g">G</button>
-                    <button value="h">H</button>
-                    <button value="i">I</button>
-                    <button value="j">J</button>
-                    <button value="k">K</button>
-                    <button value="l">L</button>
-                    <button value="m">M</button>
-                    <button value="n">N</button>
-                    <button value="ñ">Ñ</button>
-                    <button value="o">O</button>
-                    <button value="p">P</button>
-                    <button value="q">Q</button>
-                    <button value="r">R</button>
-                    <button value="s">S</button>
-                    <button value="t">T</button>
-                    <button value="u">U</button>
-                    <button value="v">V</button>
-                    <button value="w">W</button>
-                    <button value="x">X</button>
-                    <button value="y">Y</button>
-                    <button value="z">Z</button>
+                    <button class="buttons" id="button-A">A</button>
+                    <button class="buttons" id="button-B">B</button>
+                    <button class="buttons" id="button-C">C</button>
+                    <button class="buttons" id="button-D">D</button>
+                    <button class="buttons" id="button-E">E</button>
+                    <button class="buttons" id="button-F">F</button>
+                    <button class="buttons" id="button-G">G</button>
+                    <button class="buttons" id="button-H">H</button>
+                    <button class="buttons" id="button-I">I</button>
+                    <button class="buttons" id="button-J">J</button>
+                    <button class="buttons" id="button-K">K</button>
+                    <button class="buttons" id="button-L">L</button>
+                    <button class="buttons" id="button-M">M</button>
+                    <button class="buttons" id="button-N">N</button>
+                    <button class="buttons" id="button-Ñ">Ñ</button>
+                    <button class="buttons" id="button-O">O</button>
+                    <button class="buttons" id="button-P">P</button>
+                    <button class="buttons" id="button-Q">Q</button>
+                    <button class="buttons" id="button-R">R</button>
+                    <button class="buttons" id="button-S">S</button>
+                    <button class="buttons" id="button-T">T</button>
+                    <button class="buttons" id="button-U">U</button>
+                    <button class="buttons" id="button-V">V</button>
+                    <button class="buttons" id="button-W">W</button>
+                    <button class="buttons" id="button-X">X</button>
+                    <button class="buttons" id="button-Y">Y</button>
+                    <button class="buttons" id="button-Z">Z</button>
                 </div>
+            </div>
+            <div id="youWinContainer" class="notShow">
+                <h1 id="you-won">
+                    You won!! 🎉🎉
+                </h1>
+                <h2>
+                    You won in 15 seconds
+                </h2>
+                <button id="again-button">Play again</button>
+            </div>
+            <div id="youLoseContainer" class="notShow">
+                <h1 id="you-lost">
+                    You lost 😔🤘
+                </h1>
+                <h2>
+                    You lost in 15 seconds
+                </h2>
+                <button id="again-button">Play again</button>
             </div>
         </div>
         <div id="display-small">
@@ -88,104 +141,6 @@
             <h2 id="ranking-4">
             </h2>
             <div id="ranking-4-time" class="ranking-time"></div>
-        </div>
-        <div id="display-big">
-            <h1 id="game-lost">
-                You Lost
-            </h1>
-            <h2 id="title-guess">
-                Guess the word
-            </h2>
-            <img src="" alt="" id="hangman-pictures">
-            <div id="word-guess" class="hidden">
-            </div>
-                <div id="word-split-container">
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-1">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-2">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-3">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-4">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-5">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-6">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-7">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-8">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-9">
-                </div>
-                </div>
-                <div class="underline"><div class="word-guess-c invisible" id="word-guess-10">
-                </div>
-                </div>
-            </div>
-            <div id="all-buttons">
-                <button class="buttons" id="button-A">A</button>
-                <button class="buttons" id="button-B">B</button>
-                <button class="buttons" id="button-C">C</button>
-                <button class="buttons" id="button-D">D</button>
-                <button class="buttons" id="button-E">E</button>
-                <button class="buttons" id="button-F">F</button>
-                <button class="buttons" id="button-G">G</button>
-                <button class="buttons" id="button-H">H</button>
-                <button class="buttons" id="button-I">I</button>
-                <button class="buttons" id="button-J">J</button>
-                <button class="buttons" id="button-K">K</button>
-                <button class="buttons" id="button-L">L</button>
-                <button class="buttons" id="button-M">M</button>
-                <button class="buttons" id="button-N">N</button>
-                <button class="buttons" id="button-Ñ">Ñ</button>
-                <button class="buttons" id="button-O">O</button>
-                <button class="buttons" id="button-P">P</button>
-                <button class="buttons" id="button-Q">Q</button>
-                <button class="buttons" id="button-R">R</button>
-                <button class="buttons" id="button-S">S</button>
-                <button class="buttons" id="button-T">T</button>
-                <button class="buttons" id="button-U">U</button>
-                <button class="buttons" id="button-V">V</button>
-                <button class="buttons" id="button-W">W</button>
-                <button class="buttons" id="button-X">X</button>
-                <button class="buttons" id="button-Y">Y</button>
-                <button class="buttons" id="button-Z">Z</button>
-            </div>
-        </div>
-        <div id="display-small">
-            ADIOS
-        </div>
-        <div id="display-big">
-            <h1 id="you-won">
-                You won!! 🎉🎉
-            </h1>
-            <h2>
-                You won in 15 seconds
-            </h2>
-            <button id="again-button">Play again</button>
-        </div>
-        <div id="display-small">
-            ADIOS
-        </div>
-        <div id="display-big">
-            <h1 id="you-lost">
-                You lost 😔🤘
-            </h1>
-            <h2>
-                You lost in 15 seconds
-            </h2>
-            <button id="again-button">Play again</button>
-        </div>
-        <div id="display-small">
         </div>
     </div>
 </body>
