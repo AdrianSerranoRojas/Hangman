@@ -16,8 +16,8 @@ function init(){
 function crono(){
     writeSecs();
     id = setInterval(writeSecs,1000);
-    mainChoose.classList.add("notShow") //choose a user name page display none
-    mainGame.classList.remove("notShow") //game display block
+    mainChoose.classList.add("notSho") //choose a user name page display none
+    mainGame.classList.remove("notSho") //game display block
     document.querySelector("#start-button").removeEventListener("click",crono);
 }
 function writeSecs(){
@@ -84,6 +84,14 @@ var wordSplit2 = document.getElementById("word-guess-2")
 var wordSplit3 = document.getElementById("word-guess-3")
 var wordSplit4 = document.getElementById("word-guess-4")
 var wordSplit5 = document.getElementById("word-guess-5")
+var wordSplit6 = document.getElementById("word-guess-6")
+var wordSplit7 = document.getElementById("word-guess-7")
+var wordSplit8 = document.getElementById("word-guess-8")
+var wordSplit9 = document.getElementById("word-guess-9")
+var wordSplit10 = document.getElementById("word-guess-10")
+
+
+
 
 var wordGame1="";
 let wordSplit;
@@ -96,6 +104,11 @@ function gameEasy() {
     wordSplit3.textContent = wordSplit[2]
     wordSplit4.textContent = wordSplit[3]
     wordSplit5.textContent = wordSplit[4]
+    wordSplit6.textContent = wordSplit[5]
+    wordSplit7.textContent = wordSplit[6]
+    wordSplit8.textContent = wordSplit[7]
+    wordSplit9.textContent = wordSplit[8]
+    wordSplit10.textContent = wordSplit[9]
 }
 function gameMedium() {
     wordGame.textContent = (randomMedium)
@@ -106,6 +119,11 @@ function gameMedium() {
     wordSplit3.textContent = wordSplit[2]
     wordSplit4.textContent = wordSplit[3]
     wordSplit5.textContent = wordSplit[4]
+    wordSplit6.textContent = wordSplit[5]
+    wordSplit7.textContent = wordSplit[6]
+    wordSplit8.textContent = wordSplit[7]
+    wordSplit9.textContent = wordSplit[8]
+    wordSplit10.textContent = wordSplit[9]
 }
 function gameHard() {
     wordGame.textContent = (randomHard)
@@ -116,6 +134,11 @@ function gameHard() {
     wordSplit3.textContent = wordSplit[2]
     wordSplit4.textContent = wordSplit[3]
     wordSplit5.textContent = wordSplit[4]
+    wordSplit6.textContent = wordSplit[5]
+    wordSplit7.textContent = wordSplit[6]
+    wordSplit8.textContent = wordSplit[7]
+    wordSplit9.textContent = wordSplit[8]
+    wordSplit10.textContent = wordSplit[9]
 }
 
 //Buttons
@@ -149,6 +172,24 @@ buttons.forEach(btn => {
                         case "4":
                             wordSplit5.classList.remove("invisible");
                             break;
+                        case "5":
+                            wordSplit2.classList.remove("invisible");
+                            break
+                        case "6":
+                            wordSplit2.classList.remove("invisible");
+                            break
+                        case "7":
+                            wordSplit2.classList.remove("invisible");
+                            break
+                        case "8":
+                            wordSplit2.classList.remove("invisible");
+                            break
+                        case "9":
+                            wordSplit2.classList.remove("invisible");
+                            break
+                        case "10":
+                            wordSplit2.classList.remove("invisible");
+                            break
                         default:
                             break;
                     }
