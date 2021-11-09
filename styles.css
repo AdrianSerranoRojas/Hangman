@@ -124,11 +124,14 @@ body {
     flex-wrap: wrap;
     font-size: 80px;
     float: right;
-    margin-right: 40%;
+    margin-right: 20%;
     margin-top: 80px;
-    
 }
-
+.underline {
+    border-bottom: 5px solid black;
+    margin: 5px;
+    text-transform: uppercase;
+}
 /*Score Page*/
 #display-small h1 {
     text-align: left;
