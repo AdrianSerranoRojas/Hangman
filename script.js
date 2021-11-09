@@ -1,6 +1,7 @@
 //crono + displays
 window.onload = init;
 
+
 var mainChoose = document.getElementById("user-name-container")
 var mainGame = document.getElementById("game-container")
 var errors = document.getElementById("error")
@@ -13,17 +14,29 @@ function init(){
     m = 0;
     s = 0;
     document.getElementById("hms").innerHTML="00:00:00";
+    printScore();
+
+    if (localStorage.getItem(HISTORIC_KEY) !== null) {
+        userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
+        console.log("YES");
+        }
 }
+//
 function crono(){
-    writeSecs();
-    id = setInterval(writeSecs,1000);
-    if (easyButton.checked || mediumButton.checked || hardButton.checked) {
-        mainChoose.classList.add("notShow") //choose a user name page display none
-        mainGame.classList.remove("notShow") //game display block
-        document.querySelector("#start-button").removeEventListener("click",crono);
+    if (!userName.value == null || !userName.value.length==0 ){
+        if (easyButton.checked || mediumButton.checked || hardButton.checked) {
+            mainChoose.classList.add("notShow") //choose a user name page display none
+            mainGame.classList.remove("notShow") //game display block
+            document.querySelector("#start-button").removeEventListener("click",crono);
+            writeSecs();
+            id = setInterval(writeSecs,1000);
+        }
+        else {
+            errors.textContent = "Select a difficulty"
+        }
     }
     else {
-        errors.textContent = "Select a difficulty"
+        errors.textContent = "Write a name"
     }
 }
 function writeSecs(){
@@ -50,12 +63,189 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",crono);
 }
+//Objects
+
+const HISTORIC_KEY = "historic";
+var userHistoric = [];
+//const HISTORIC_KEY = "myhistorickey";
+
+
+const userName=document.querySelector("#user-name-input");
+let userNameV;
+let newUser;
+const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
+
+function assignName(){
+    userNameV=userName.value;
+    userCrono=document.getElementById("hms").innerHTML;
+    createUser(userNameV,userCrono);
+    userHistoric.push(newUser);
+    printScore();
+}
+function createUser(name = "default", score = "Currently playing...") {
+    console.log(userHistoric)
+        newUser = {
+        name: name,
+        score: score
+    };
+}
+//const newUser = createUser();
+
+//RANKING
+
+let ranking1=document.querySelector("#ranking-1");
+let ranking2=document.querySelector("#ranking-2");
+let ranking3=document.querySelector("#ranking-3");
+let ranking4=document.querySelector("#ranking-4");
+
+let ranking1Time=document.querySelector("#ranking-1-time");
+let ranking2Time=document.querySelector("#ranking-2-time");
+let ranking3Time=document.querySelector("#ranking-3-time");
+let ranking4Time=document.querySelector("#ranking-4-time");
+
+
+function printScore(){
+    userScoreOr();
+    ranking1.innerText=userHistoric[0].name;
+    ranking1Time.innerText=userHistoric[0].score;
+    ranking2.innerText=userHistoric[1].name;
+    ranking2Time.innerText=userHistoric[1].score;
+    ranking3.innerText=userHistoric[2].name;
+    ranking3Time.innerText=userHistoric[2].score;
+    ranking4.innerText=userHistoric[3].name;
+    ranking4Time.innerText=userHistoric[3].score;
+}
+
+
+//userHistoric.push(newUser);
+
+
+
+// ordenar array
+
+userHistoric= [
+    {
+        name:"Adri" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Juan" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Pepe" ,
+        score:"10:00:00"
+    },
+    {
+        name:"Pepe" ,
+        score:"10:00:00"
+    }
+]
+
+let  userHistoricOr;
+function userScoreOr(){
+    userHistoricOr = userHistoric.sort(function (a, b) {
+        if (a.score > b.score) {
+        return 1;
+        }
+        if (a.score < b.score) {
+        return -1;
+        }
+        // a must be equal to b
+        return 0;
+    });
+}
+
+
+
+
+
+
+//restart
+let restartButton=document.getElementById("again-button")
+restartButton.addEventListener("click",restartFun)
+let buttons1=document.querySelectorAll(".buttons")
+
+function restartFun(){
+    reset();
+    loseContainer.classList.add("notShow")
+    winContainer.classList.add("notShow")
+    mainChoose.classList.remove("notShow")
+    wordSplit1.classList.add("invisible");
+    wordSplit2.classList.add("invisible");
+    wordSplit3.classList.add("invisible");
+    wordSplit4.classList.add("invisible");
+    wordSplit5.classList.add("invisible");
+    wordSplit6.classList.add("invisible");
+    wordSplit7.classList.add("invisible");
+    wordSplit8.classList.add("invisible");
+    wordSplit9.classList.add("invisible");
+    wordSplit10.classList.add("invisible");
+    easyButton.checked=false;
+    mediumButton.checked=false;
+    hardButton.checked=false;
+    buttons1.forEach(btn=>{
+        btn.classList.remove("invisible")
+    })
+    counterWin=0;
+    contadorI=0;
+    userName.value="";
+    errors.textContent ="";
+    hangmanPicturesSrc=hangmanPicturesArray[contadorI]
+    hangmanPictures.src=hangmanPicturesSrc;
+}
+
+
+// const HISTORIC_KEY = "historic";
+
+// let usersList = document.getElementById("historicList");
+// let btnAdd = document.getElementById("btnAdd");
+
+// let historicList = [];
+
+// window.onload = (e) => {
+//   initDOMRefs();
+//   historicList = [];
+
+//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
+//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
+//     updateList(historicList);
+//   }
+// };
+
+// function initDOMRefs() {
+//   usersList = document.getElementById("historicList");
+//   btnAdd = document.getElementById("btnAdd");
+//   btnAdd.addEventListener("click", (e) => {
+//     addNewUser();
+//   });
+// }
+
+// function createListElement({ username, score }) {
+//   const newListItem = document.createElement("li");
+//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
+//   usersList.appendChild(newListItem);
+// }
+
+// function updateList(items) {
+//   usersList.innerHTML = null;
+//   items.forEach((i) => {
+//     createListElement({ username: i.username, score: i.score });
+//   });
+// }
+
+// function addNewUser() {
+//   const newUser = { username: "John", score: 100 };
+//   historicList.push(newUser);
+//   updateList(historicList);
+//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
+// }
 
 
 //random words
 
     //Easy
-var wordsEasy = ['Rock',
+    var wordsEasy = ['Rock',
     'King',
     'Good'];
 var randomEasy = wordsEasy[Math.floor(Math.random()*wordsEasy.length)];
@@ -146,6 +336,7 @@ function gameHard() {
     wordSplit9.textContent = wordSplit[8]
     wordSplit10.textContent = wordSplit[9]
 }
+
 //counter to win or loose
 let counterWin = 0;
 const winContainer = document.getElementById("youWinContainer")
@@ -162,35 +353,6 @@ function WinOrLooseFun(){
         loseContainer.classList.remove("notShow")
     }
     return;
-}
-//restart
-let restartButton=document.getElementById("again-button")
-restartButton.addEventListener("click",restartFun)
-let buttons1=document.querySelectorAll(".buttons")
-
-function restartFun(){
-    reset();
-    loseContainer.classList.add("notShow")
-    winContainer.classList.add("notShow")
-    mainChoose.classList.remove("notShow")
-    wordSplit1.classList.add("invisible");
-    wordSplit2.classList.add("invisible");
-    wordSplit3.classList.add("invisible");
-    wordSplit4.classList.add("invisible");
-    wordSplit5.classList.add("invisible");
-    wordSplit6.classList.add("invisible");
-    wordSplit7.classList.add("invisible");
-    wordSplit8.classList.add("invisible");
-    wordSplit9.classList.add("invisible");
-    wordSplit10.classList.add("invisible");
-    easyButton.checked=false;
-    mediumButton.checked=false;
-    hardButton.checked=false;
-    buttons1.forEach(btn=>{
-        btn.classList.remove("invisible")
-    })
-    counterWin=0;
-    contadorI=0;
 }
 
 
@@ -281,143 +443,3 @@ function hangmanPicturesArraySum(){
     contadorI++;
     hangmanPicturesSrc=hangmanPicturesArray[contadorI];
 }
-
-
-
-//Objects
-var userHistoric = [];
-//const HISTORIC_KEY = "myhistorickey";
-
-
-const userName=document.querySelector("#user-name-input");
-let userNameV;
-let newUser;
-const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
-
-function assignName(){
-    userNameV=userName.value;
-    userCrono=document.getElementById("hms").innerHTML;
-    createUser(userNameV,userCrono);
-    userHistoric.push(newUser);
-    printScore();
-}
-function createUser(name = "default", score = "Currently playing...") {
-    console.log(userHistoric)
-        newUser = {
-        name: name,
-        score: score
-    };
-}
-//const newUser = createUser();
-
-//RANKING
-
-let ranking1=document.querySelector("#ranking-1");
-let ranking2=document.querySelector("#ranking-2");
-let ranking3=document.querySelector("#ranking-3");
-let ranking4=document.querySelector("#ranking-4");
-
-let ranking1Time=document.querySelector("#ranking-1-time");
-let ranking2Time=document.querySelector("#ranking-2-time");
-let ranking3Time=document.querySelector("#ranking-3-time");
-let ranking4Time=document.querySelector("#ranking-4-time");
-
-
-function printScore(){
-    userScoreOr();
-    ranking1.innerText=userHistoric[0].name;
-    ranking1Time.innerText=userHistoric[0].score;
-    ranking2.innerText=userHistoric[1].name;
-    ranking2Time.innerText=userHistoric[1].score;
-    ranking3.innerText=userHistoric[2].name;
-    ranking3Time.innerText=userHistoric[2].score;
-    ranking4.innerText=userHistoric[3].name;
-    ranking4Time.innerText=userHistoric[3].score;
-}
-
-
-//userHistoric.push(newUser);
-
-//if (firstName.value == null || firstName.value.length==0|| /^\s+$/.test(firstName.value) ||!(/^[a-zA-Z\s]{0,20}$/.test(firstName.value)))
-
-// ordenar array
-
-userHistoric= [
-    {
-        name:"Adri" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Juan" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Pepe" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Pepe" ,
-        score:"10:00:00"
-    }
-]
-
-let  userHistoricOr;
-function userScoreOr(){
-    userHistoricOr = userHistoric.sort(function (a, b) {
-        if (a.score > b.score) {
-        return 1;
-        }
-        if (a.score < b.score) {
-        return -1;
-        }
-        // a must be equal to b
-        return 0;
-    });
-}
-
-
-
-// const HISTORIC_KEY = "historic";
-
-// let usersList = document.getElementById("historicList");
-// let btnAdd = document.getElementById("btnAdd");
-
-// let historicList = [];
-
-// window.onload = (e) => {
-//   initDOMRefs();
-//   historicList = [];
-
-//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
-//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
-//     updateList(historicList);
-//   }
-// };
-
-// function initDOMRefs() {
-//   usersList = document.getElementById("historicList");
-//   btnAdd = document.getElementById("btnAdd");
-//   btnAdd.addEventListener("click", (e) => {
-//     addNewUser();
-//   });
-// }
-
-// function createListElement({ username, score }) {
-//   const newListItem = document.createElement("li");
-//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
-//   usersList.appendChild(newListItem);
-// }
-
-// function updateList(items) {
-//   usersList.innerHTML = null;
-//   items.forEach((i) => {
-//     createListElement({ username: i.username, score: i.score });
-//   });
-// }
-
-// function addNewUser() {
-//   const newUser = { username: "John", score: 100 };
-//   historicList.push(newUser);
-//   updateList(historicList);
-//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
-// }
