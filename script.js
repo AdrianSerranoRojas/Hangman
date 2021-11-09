@@ -3,6 +3,7 @@ window.onload = init;
 
 var mainChoose = document.getElementById("user-name-container")
 var mainGame = document.getElementById("game-container")
+var errors = document.getElementById("error")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",crono);
@@ -16,9 +17,14 @@ function init(){
 function crono(){
     writeSecs();
     id = setInterval(writeSecs,1000);
-    mainChoose.classList.add("notShow") //choose a user name page display none
-    mainGame.classList.remove("notShow") //game display block
-    document.querySelector("#start-button").removeEventListener("click",crono);
+    if (easyButton.checked || mediumButton.checked || hardButton.checked) {
+        mainChoose.classList.add("notShow") //choose a user name page display none
+        mainGame.classList.remove("notShow") //game display block
+        document.querySelector("#start-button").removeEventListener("click",crono);
+    }
+    else {
+        errors.textContent = "Select a difficulty"
+    }
 }
 function writeSecs(){
     var hAux, mAux, sAux;

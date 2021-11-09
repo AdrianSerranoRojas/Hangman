@@ -28,12 +28,24 @@ body {
     align-items: center;
     flex-direction: column;
 }
+#user-name-container h1{
+    margin: 20px;
+}
 #user-name-input-container{
     font-size: 1.2em;
     display: flex;
     flex-direction: column;
     text-align: left;
     gap: 10px;
+}
+#user-name-input-container label{
+text-align: center;
+}
+#user-name-input-container p {
+    color: rgba(128, 128, 128, 0.8);
+    background-color: rgba(128, 128, 128, 0.2);
+    width: 150px;
+    margin: auto;
 }
 #user-name-input{
     height: 30px;
@@ -49,6 +61,21 @@ body {
     border-radius: 5px;
     font-weight: bolder;
     font-size: 1em;
+}
+#start-button:hover{
+background-color: rgba(0, 0, 0, 0.6);
+}
+form{
+    margin: 15px;
+}
+#easyID {
+    color: green;
+}
+#mediumID {
+    color: orange;
+}
+#hardID {
+    color: red;
 }
 
 /* Structure Page*/
@@ -68,6 +95,8 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 35px 5px rgba(0,0,0,0.7);
+    box-shadow: 5px 5px 35px 5px rgba(0,0,0,0.7);
 }
 #display-small{
     background-color: white;
@@ -79,6 +108,8 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 35px 5px rgba(0,0,0,0.7);
+    box-shadow: 5px 5px 35px 5px rgba(0,0,0,0.7);
 }
 
 
@@ -92,6 +123,15 @@ body {
 #all-buttons button {
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
+    margin: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    height: 40px;
+}
+#all-buttons button:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
     margin: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
