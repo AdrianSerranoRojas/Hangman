@@ -27,7 +27,6 @@ function writeSecs(){
     if (h<10){hAux="0"+h;}else{hAux=h;}
 
     document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux;
-    
 }
 function stop(){
     clearInterval(id);
@@ -96,11 +95,21 @@ function gameMedium() {
     wordGame.textContent = (randomMedium)
     wordGame1=wordGame.textContent
     wordSplit = wordGame1.split("");
+    wordSplit1.textContent = wordSplit[0]
+    wordSplit2.textContent = wordSplit[1]
+    wordSplit3.textContent = wordSplit[2]
+    wordSplit4.textContent = wordSplit[3]
+    wordSplit5.textContent = wordSplit[4]
 }
 function gameHard() {
     wordGame.textContent = (randomHard)
     wordGame1=wordGame.textContent;
     wordSplit = wordGame1.split("");
+    wordSplit1.textContent = wordSplit[0]
+    wordSplit2.textContent = wordSplit[1]
+    wordSplit3.textContent = wordSplit[2]
+    wordSplit4.textContent = wordSplit[3]
+    wordSplit5.textContent = wordSplit[4]
 }
 
 //Buttons
@@ -110,48 +119,54 @@ buttons = document.querySelectorAll("#all-buttons");
 buttons.forEach(btn => {
     btn.addEventListener("click",(e)=> {
         buttonValue=e.target.innerText;
-        console.log(buttonValue)
-        console.log(wordGame1)
         console.log(wordSplit)
-        for (i in wordSplit){
-            if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
-                console.log("YES")
-                e.target.classList.add("invisible");
-                switch (i) {
-                    case "0":
-                        wordSplit1.classList.remove("invisible");
-                        console.log(i);
-                        break;
-                    case "1":
-                        wordSplit2.classList.remove("invisible");
-                        console.log(i);
-                        break;
-                    case "2":
-                        wordSplit3.classList.remove("invisible");
-                        console.log(i);
-                        break;
-                    case "3":
-                        wordSplit4.classList.remove("invisible");
-                        console.log(i);
-                        break;
-                    case "4":
-                        wordSplit5.classList.remove("invisible");
-                        console.log(i);
-                        break;
-                    default:
-                        break;
+        if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
+            //hangmanPictures.src=hangmanPicturesSrc;
+            e.target.classList.add("invisible");
+            console.log("yes")
+            for (i in wordSplit){
+                if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
+                    e.target.classList.add("invisible");
+                    switch (i) {
+                        case "0":
+                            wordSplit1.classList.remove("invisible");
+                            break;
+                        case "1":
+                            wordSplit2.classList.remove("invisible");
+                            break;
+                        case "2":
+                            wordSplit3.classList.remove("invisible");
+                            break;
+                        case "3":
+                            wordSplit4.classList.remove("invisible");
+                            break;
+                        case "4":
+                            wordSplit5.classList.remove("invisible");
+                            break;
+                        default:
+                            break;
+                    }
+                   // return; lo quito por si se repite la letra
                 }
-               // return; lo quito por si se repite la letra
-            }else{
-                console.log("NOOO")
             }
+        }else{
+            e.target.classList.add("invisible");
+            hangmanPicturesArraySum()
+            hangmanPictures.src=hangmanPicturesSrc;
         }
     })
 });
 //array de imagenes
+let contadorI=0;
 const hangmanPictures=document.querySelector("#hangman-pictures")
-let hangmanPicturesArray=["assets/hangman - 1.png","assets/hangman - 2.png"]
-hangmanPictures.src="assets/hangman - 1.png"
+let hangmanPicturesArray=["assets/hangman - 1.png","assets/hangman - 2.png","assets/hangman - 3.png","assets/hangman - 4.png","assets/hangman - 5.png","assets/hangman - 6.png","assets/hangman - 7.png"]
+let hangmanPicturesSrc=hangmanPicturesArray[contadorI]
+hangmanPictures.src=hangmanPicturesSrc;
+function hangmanPicturesArraySum(){
+    console.log("no")
+    contadorI++;
+    hangmanPicturesSrc=hangmanPicturesArray[contadorI];
+}
 
 
 
