@@ -157,60 +157,62 @@ buttons = document.querySelectorAll("#all-buttons");
 
 buttons.forEach(btn => {
     btn.addEventListener("click",(e)=> {
-        buttonValue=e.target.innerText;
-        console.log(wordSplit)
-        if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
-            //hangmanPictures.src=hangmanPicturesSrc;
-            counterWin++;
-            e.target.classList.add("invisible");
-            console.log("yes")
-            for (i in wordSplit){
-                if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
-                    e.target.classList.add("invisible");
-                    switch (i) {
-                        case "0":
-                            wordSplit1.classList.remove("invisible");
-                            break;
-                        case "1":
-                            wordSplit2.classList.remove("invisible");
-                            break;
-                        case "2":
-                            wordSplit3.classList.remove("invisible");
-                            break;
-                        case "3":
-                            wordSplit4.classList.remove("invisible");
-                            break;
-                        case "4":
-                            wordSplit5.classList.remove("invisible");
-                            break;
-                        case "5":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        case "6":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        case "7":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        case "8":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        case "9":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        case "10":
-                            wordSplit2.classList.remove("invisible");
-                            break
-                        default:
-                            break;
+        if (e.target.matches(".buttons")){
+            buttonValue=e.target.innerText;
+            console.log(wordSplit)
+            if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
+                //hangmanPictures.src=hangmanPicturesSrc;
+                counterWin++;
+                e.target.classList.add("invisible");
+                console.log("yes")
+                for (i in wordSplit){
+                    if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
+                        //e.target.classList.add("invisible");
+                        switch (i) {
+                            case "0":
+                                wordSplit1.classList.remove("invisible");
+                                break;
+                            case "1":
+                                wordSplit2.classList.remove("invisible");
+                                break;
+                            case "2":
+                                wordSplit3.classList.remove("invisible");
+                                break;
+                            case "3":
+                                wordSplit4.classList.remove("invisible");
+                                break;
+                            case "4":
+                                wordSplit5.classList.remove("invisible");
+                                break;
+                            case "5":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            case "6":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            case "7":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            case "8":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            case "9":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            case "10":
+                                wordSplit2.classList.remove("invisible");
+                                break
+                            default:
+                                break;
+                        }
+                       // return; lo quito por si se repite la letra
                     }
-                   // return; lo quito por si se repite la letra
                 }
+            }else{
+                e.target.classList.add("invisible");
+                hangmanPicturesArraySum()
+                hangmanPictures.src=hangmanPicturesSrc;
             }
-        }else{
-            e.target.classList.add("invisible");
-            hangmanPicturesArraySum()
-            hangmanPictures.src=hangmanPicturesSrc;
         }
         WinOrLooseFun()
     })
