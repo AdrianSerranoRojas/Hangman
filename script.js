@@ -154,6 +154,8 @@ function WinOrLooseFun(){
     if(counterWin>=wordSplit.length){
         mainGame.classList.add("notShow")
         winContainer.classList.remove("notShow")
+        assignName();
+        stop();
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
@@ -161,9 +163,40 @@ function WinOrLooseFun(){
     }
     return;
 }
+//restart
+let restartButton=document.getElementById("again-button")
+restartButton.addEventListener("click",restartFun)
+let buttons1=document.querySelectorAll(".buttons")
+
+function restartFun(){
+    reset();
+    loseContainer.classList.add("notShow")
+    winContainer.classList.add("notShow")
+    mainChoose.classList.remove("notShow")
+    wordSplit1.classList.add("invisible");
+    wordSplit2.classList.add("invisible");
+    wordSplit3.classList.add("invisible");
+    wordSplit4.classList.add("invisible");
+    wordSplit5.classList.add("invisible");
+    wordSplit6.classList.add("invisible");
+    wordSplit7.classList.add("invisible");
+    wordSplit8.classList.add("invisible");
+    wordSplit9.classList.add("invisible");
+    wordSplit10.classList.add("invisible");
+    easyButton.checked=false;
+    mediumButton.checked=false;
+    hardButton.checked=false;
+    buttons1.forEach(btn=>{
+        btn.classList.remove("invisible")
+    })
+    counterWin=0;
+    contadorI=0;
+}
+
+
 //Buttons
 
-buttons = document.querySelectorAll("#all-buttons");
+let buttons = document.querySelectorAll("#all-buttons");
 
 buttons.forEach(btn => {
     btn.addEventListener("click",(e)=> {
@@ -172,7 +205,6 @@ buttons.forEach(btn => {
             console.log(wordSplit)
             if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
                 //hangmanPictures.src=hangmanPicturesSrc;
-                counterWin++;
                 e.target.classList.add("invisible");
                 console.log("yes")
                 for (i in wordSplit){
@@ -181,36 +213,47 @@ buttons.forEach(btn => {
                         switch (i) {
                             case "0":
                                 wordSplit1.classList.remove("invisible");
+                                counterWin++;
                                 break;
                             case "1":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break;
                             case "2":
                                 wordSplit3.classList.remove("invisible");
+                                counterWin++;
                                 break;
                             case "3":
                                 wordSplit4.classList.remove("invisible");
+                                counterWin++;
                                 break;
                             case "4":
                                 wordSplit5.classList.remove("invisible");
+                                counterWin++;
                                 break;
                             case "5":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             case "6":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             case "7":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             case "8":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             case "9":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             case "10":
                                 wordSplit2.classList.remove("invisible");
+                                counterWin++;
                                 break
                             default:
                                 break;
