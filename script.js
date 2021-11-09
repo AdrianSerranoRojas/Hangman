@@ -142,12 +142,16 @@ function gameHard() {
 }
 //counter to win or loose
 let counterWin = 0;
+const winContainer = document.getElementById("youWinContainer")
+const loseContainer = document.getElementById("youLoseContainer")
 function WinOrLooseFun(){
     if(counterWin>=wordSplit.length){
-        console.log("ganaste!!!")
+        mainGame.classList.add("notShow")
+        winContainer.classList.remove("notShow")
     }
     if(contadorI>=6){
-        console.log("perdiste!!!")
+        mainGame.classList.add("notShow")
+        loseContainer.classList.remove("notShow")
     }
     return;
 }

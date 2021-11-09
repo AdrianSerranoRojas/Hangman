@@ -98,7 +98,7 @@ body {
     border-radius: 10px;
     height: 40px;
 }
-#game-lost {
+#hms {
     color: red;
     float: left;
     margin-left: 30px;
