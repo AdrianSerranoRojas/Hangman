@@ -16,18 +16,18 @@
                     <h1>Choose a user name</h1>
                 </div>
                 <div id="user-name">
-                    <form>
-                          <input type="radio" id="easy" name="difficulty" value="easy">
-                          <label for="easy">Easy</label>
-                          <input type="radio" id="medium" name="difficulty" value="medium">
-                          <label for="medium">Medium</label>
-                          <input type="radio" id="hard" name="difficulty" value="hard">
-                          <label for="hard">Hard</label>
-                    </form>
                     <div id="user-name-input-container">
-                        <div id="hms"></div>
                         <label for="user-name">User name</label>
                         <input type="text" id="user-name-input" name="user-name">
+                        <form>
+                              <input type="radio" id="easy" name="difficulty" value="easy">
+                              <label for="easy" id="easyID">Easy</label>
+                              <input type="radio" id="medium" name="difficulty" value="medium">
+                              <label for="medium" id="mediumID">Medium</label>
+                              <input type="radio" id="hard" name="difficulty" value="hard">
+                              <label for="hard" id="hardID">Hard</label>
+                        </form>
+                        <p id="error"></p>
                         <button id="start-button">Start</button>
                         <button id="pause-button">Pause</button>
                         <button id="reset-button">Reset</button>
@@ -35,9 +35,7 @@
                 </div>
             </div>
             <div id="game-container" class="notShow">
-                <h1 id="game-lost">
-                    You Lost
-                </h1>
+                    <div id="hms"></div>
                 <h2 id="title-guess">
                     Guess the word
                 </h2>
