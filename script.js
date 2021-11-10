@@ -21,8 +21,8 @@ function loadLocalStorage(){
     if (localStorage.getItem(HISTORIC_KEY) !== null) {
         userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
         console.log("YES");
-        console.log(userHistoric)
-        printScore();
+        console.log(userHistoric);
+        updateList(userHistoric);
     }
     else{
         console.log("NO!")
@@ -78,32 +78,21 @@ function reset(){
 const HISTORIC_KEY = "historic";
 var userHistoric = [];
 
-//clear history
-let clearHistory = document.getElementById("clear-button")
-clearHistory.addEventListener("click", historyClearing)
-
-function historyClearing(){
-    localStorage.clear()
-    useruser()
-    printScore()
-}
-
 const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
 const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
 
-function assignName(){//and save on localStorage
+function assignName(){
     userNameV=userName.value;
     userCrono=document.getElementById("hms").innerHTML;
     createUser(userNameV,userCrono);
     userHistoric.push(newUser);
+    userScoreOr()
+    updateList(userHistoric);
     saveLocalStorage()
-    printScore();
 }
-function saveLocalStorage(){
-    localStorage.setItem(HISTORIC_KEY, JSON.stringify(userHistoric));
-}
+
 function createUser(name = "default", score = "Currently playing...") {
     console.log(userHistoric)
         newUser = {
@@ -112,60 +101,8 @@ function createUser(name = "default", score = "Currently playing...") {
     };
 }
 
-//RANKING
-
-let ranking1=document.querySelector("#ranking-1");
-let ranking2=document.querySelector("#ranking-2");
-let ranking3=document.querySelector("#ranking-3");
-let ranking4=document.querySelector("#ranking-4");
-
-let ranking1Time=document.querySelector("#ranking-1-time");
-let ranking2Time=document.querySelector("#ranking-2-time");
-let ranking3Time=document.querySelector("#ranking-3-time");
-let ranking4Time=document.querySelector("#ranking-4-time");
-
-
-function printScore(){
-    userScoreOr();
-    ranking1.innerText=userHistoric[0].name;
-    ranking1Time.innerText=userHistoric[0].score;
-    ranking2.innerText=userHistoric[1].name;
-    ranking2Time.innerText=userHistoric[1].score;
-    ranking3.innerText=userHistoric[2].name;
-    ranking3Time.innerText=userHistoric[2].score;
-    ranking4.innerText=userHistoric[3].name;
-    ranking4Time.innerText=userHistoric[3].score;
-}
-
-
-//userHistoric.push(newUser);
-
-
-
-// ordenar array
-
-function useruser() {
-userHistoric= [
-    {
-        name:"Adri" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Juan" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Pepe" ,
-        score:"10:00:00"
-    },
-    {
-        name:"Pepe" ,
-        score:"10:00:00"
-    }
-]
-}
-
 let  userHistoricOr;
+
 function userScoreOr(){
     userHistoricOr = userHistoric.sort(function (a, b) {
         if (a.score > b.score) {
@@ -179,7 +116,33 @@ function userScoreOr(){
     });
 }
 
-//restart
+let userScoresList = document.querySelector("#users-scores-list")
+
+function updateList(items) {
+    userScoresList.innerHTML = null;
+    items.forEach((i) => {
+    createListElement({ name: i.name, score: i.score });
+    });
+}
+
+function createListElement({ name, score }) {
+    const newListItem = document.createElement("li");
+    newListItem.innerText = "Username: " + name + "\nScore: " + score;
+    userScoresList.appendChild(newListItem);
+}
+
+function saveLocalStorage(){
+    localStorage.setItem(HISTORIC_KEY, JSON.stringify(userHistoric));
+}
+
+let clearHistory = document.getElementById("clear-button")
+clearHistory.addEventListener("click", historyClearing)
+
+function historyClearing(){
+    localStorage.clear()
+    updateList(userHistoric)
+}
+
 let restartButton=document.getElementById("again-button")
 restartButton.addEventListener("click",restartFun)
 let buttons1=document.querySelectorAll(".buttons")
@@ -241,7 +204,6 @@ var easyButton = document.getElementById("easy")
 var mediumButton = document.getElementById("medium")
 var hardButton = document.getElementById("hard")
 
-
 easyButton.addEventListener("click", gameEasy)
 mediumButton.addEventListener("click", gameMedium)
 hardButton.addEventListener("click", gameHard)
@@ -260,9 +222,8 @@ var wordSplit10 = document.getElementById("word-guess-10")
 
 var wordGame1="";
 let wordSplit;
-function gameEasy() {
-    wordGame.textContent = (randomEasy)
-    wordGame1 = wordGame.textContent
+
+function wordSplitFun(){
     wordSplit = wordGame1.split("");
     wordSplit1.textContent = wordSplit[0]
     wordSplit2.textContent = wordSplit[1]
@@ -274,36 +235,23 @@ function gameEasy() {
     wordSplit8.textContent = wordSplit[7]
     wordSplit9.textContent = wordSplit[8]
     wordSplit10.textContent = wordSplit[9]
+}
+
+function gameEasy() {
+    wordGame.textContent = (randomEasy)
+    wordGame1 = wordGame.textContent
+    wordSplitFun()
+    
 }
 function gameMedium() {
     wordGame.textContent = (randomMedium)
     wordGame1=wordGame.textContent
-    wordSplit = wordGame1.split("");
-    wordSplit1.textContent = wordSplit[0]
-    wordSplit2.textContent = wordSplit[1]
-    wordSplit3.textContent = wordSplit[2]
-    wordSplit4.textContent = wordSplit[3]
-    wordSplit5.textContent = wordSplit[4]
-    wordSplit6.textContent = wordSplit[5]
-    wordSplit7.textContent = wordSplit[6]
-    wordSplit8.textContent = wordSplit[7]
-    wordSplit9.textContent = wordSplit[8]
-    wordSplit10.textContent = wordSplit[9]
+    wordSplitFun()
 }
 function gameHard() {
     wordGame.textContent = (randomHard)
     wordGame1=wordGame.textContent;
-    wordSplit = wordGame1.split("");
-    wordSplit1.textContent = wordSplit[0]
-    wordSplit2.textContent = wordSplit[1]
-    wordSplit3.textContent = wordSplit[2]
-    wordSplit4.textContent = wordSplit[3]
-    wordSplit5.textContent = wordSplit[4]
-    wordSplit6.textContent = wordSplit[5]
-    wordSplit7.textContent = wordSplit[6]
-    wordSplit8.textContent = wordSplit[7]
-    wordSplit9.textContent = wordSplit[8]
-    wordSplit10.textContent = wordSplit[9]
+    wordSplitFun()
 }
 
 //counter to win or loose
@@ -363,30 +311,28 @@ buttons.forEach(btn => {
                                 counterWin++;
                                 break;
                             case "5":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit6.classList.remove("invisible");
                                 counterWin++;
-                                break
+                                break;
                             case "6":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit7.classList.remove("invisible");
                                 counterWin++;
-                                break
+                                break;
                             case "7":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit8.classList.remove("invisible");
                                 counterWin++;
-                                break
+                                break;
                             case "8":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit9.classList.remove("invisible");
                                 counterWin++;
-                                break
+                                break;
                             case "9":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit10.classList.remove("invisible");
                                 counterWin++;
-                                break
+                                break;
                             case "10":
-                                wordSplit2.classList.remove("invisible");
+                                wordSplit11.classList.remove("invisible");
                                 counterWin++;
-                                break
-                            default:
                                 break;
                         }
                        // return; lo quito por si se repite la letra
@@ -401,12 +347,14 @@ buttons.forEach(btn => {
         WinOrLooseFun()
     })
 });
+
 //array de imagenes
 let contadorI=0;
 const hangmanPictures=document.querySelector("#hangman-pictures")
 let hangmanPicturesArray=["assets/hangman - 1.png","assets/hangman - 2.png","assets/hangman - 3.png","assets/hangman - 4.png","assets/hangman - 5.png","assets/hangman - 6.png","assets/hangman - 7.png"]
 let hangmanPicturesSrc=hangmanPicturesArray[contadorI]
 hangmanPictures.src=hangmanPicturesSrc;
+
 function hangmanPicturesArraySum(){
     console.log("no")
     contadorI++;
@@ -583,3 +531,29 @@ function hangmanPicturesArraySum(){
 //   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
 // }
 
+//RANKING
+
+// let ranking1=document.querySelector("#ranking-1");
+// let ranking2=document.querySelector("#ranking-2");
+// let ranking3=document.querySelector("#ranking-3");
+// let ranking4=document.querySelector("#ranking-4");
+
+// let ranking1Time=document.querySelector("#ranking-1-time");
+// let ranking2Time=document.querySelector("#ranking-2-time");
+// let ranking3Time=document.querySelector("#ranking-3-time");
+// let ranking4Time=document.querySelector("#ranking-4-time");
+
+
+// function printScore(){
+//     userScoreOr();
+//     ranking1.innerText=userHistoric[0].name;
+//     ranking1Time.innerText=userHistoric[0].score;
+//     ranking2.innerText=userHistoric[1].name;
+//     ranking2Time.innerText=userHistoric[1].score;
+//     ranking3.innerText=userHistoric[2].name;
+//     ranking3Time.innerText=userHistoric[2].score;
+//     ranking4.innerText=userHistoric[3].name;
+//     ranking4Time.innerText=userHistoric[3].score;
+// }
+
+//userHistoric.push(newUser);
