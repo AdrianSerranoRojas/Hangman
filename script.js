@@ -164,16 +164,6 @@ function restartFun(){
     loseContainer.classList.add("notShow")
     winContainer.classList.add("notShow")
     mainChoose.classList.remove("notShow")
-    wordSplit1.classList.add("invisible");
-    wordSplit2.classList.add("invisible");
-    wordSplit3.classList.add("invisible");
-    wordSplit4.classList.add("invisible");
-    wordSplit5.classList.add("invisible");
-    wordSplit6.classList.add("invisible");
-    wordSplit7.classList.add("invisible");
-    wordSplit8.classList.add("invisible");
-    wordSplit9.classList.add("invisible");
-    wordSplit10.classList.add("invisible");
     easyButton.checked=false;
     mediumButton.checked=false;
     hardButton.checked=false;
@@ -186,30 +176,30 @@ function restartFun(){
     errors.textContent ="";
     hangmanPicturesSrc=hangmanPicturesArray[contadorI]
     hangmanPictures.src=hangmanPicturesSrc;
+    wordSplit="";
 }
 
 
 //random words
-
-    //Easy
-    var wordsEasy = ['Rock',
+var wordsEasy = [
+    'Rock',
     'King',
     'Good'];
-var randomEasy = wordsEasy[Math.floor(Math.random()*wordsEasy.length)];
+
 
     //Medium
 var wordsMedium = [
     'Space',
     'Mouse',
     'Pasta'];
-var randomMedium = wordsMedium[Math.floor(Math.random()*wordsMedium.length)];
+
 
     //Hard
 var wordsHard = [
     'Nightmare',
     'Keyboard',
     'Potatoe'];
-var randomHard = wordsHard[Math.floor(Math.random()*wordsHard.length)];
+
 
 //Choose Difficulty
 var easyButton = document.getElementById("easy")
@@ -221,53 +211,52 @@ mediumButton.addEventListener("click", gameMedium)
 hardButton.addEventListener("click", gameHard)
 
 var wordGame = document.getElementById("word-guess")
-var wordSplit1 = document.getElementById("word-guess-1")
-var wordSplit2 = document.getElementById("word-guess-2")
-var wordSplit3 = document.getElementById("word-guess-3")
-var wordSplit4 = document.getElementById("word-guess-4")
-var wordSplit5 = document.getElementById("word-guess-5")
-var wordSplit6 = document.getElementById("word-guess-6")
-var wordSplit7 = document.getElementById("word-guess-7")
-var wordSplit8 = document.getElementById("word-guess-8")
-var wordSplit9 = document.getElementById("word-guess-9")
-var wordSplit10 = document.getElementById("word-guess-10")
 
 var wordGame1="";
 let wordSplit;
 let wordSplitcontainer = document.querySelector("#word-split-container")
+let wordSplitcontainerLenght = document.querySelectorAll("#word-split-container")
 let wordSplitI;
+let wordSplitX;
+
 function wordSplitFun(){
     wordSplit = wordGame1.split("");
 for (i in wordSplit){
     wordSplitI = document.createElement("div")
+    wordSplitI.classList.add("underline")
+    wordSplitX = document.createElement("div")
+    wordSplitX.classList.add("word-guess-c")
+    wordSplitX.classList.add("invisible")
+    wordSplitX.setAttribute("id","word-guess-"+i)
+    wordSplitX.textContent=wordSplit[i]
+    wordSplitI.appendChild(wordSplitX)
+
     console.log(wordSplit[i]);
     wordSplitcontainer.appendChild(wordSplitI)
+    }
 }
 
-
-    wordSplit1.textContent = wordSplit[0]
-    wordSplit2.textContent = wordSplit[1]
-    wordSplit3.textContent = wordSplit[2]
-    wordSplit4.textContent = wordSplit[3]
-    wordSplit5.textContent = wordSplit[4]
-    wordSplit6.textContent = wordSplit[5]
-    wordSplit7.textContent = wordSplit[6]
-    wordSplit8.textContent = wordSplit[7]
-    wordSplit9.textContent = wordSplit[8]
-    wordSplit10.textContent = wordSplit[9]
+function deleteWordSplitFun(){
+    console.log(wordSplitcontainerLenght.length)
+    while (wordSplitcontainerLenght.length>=0) {
+    wordSplitcontainer.removeChild(wordSplitcontainer.lastChild)
+    }
 }
 
 function gameEasy() {
+    var randomEasy = wordsEasy[Math.floor(Math.random()*wordsEasy.length)];
     wordGame.textContent = (randomEasy)
     wordGame1 = wordGame.textContent
     wordSplitFun()
 }
 function gameMedium() {
+    var randomMedium = wordsMedium[Math.floor(Math.random()*wordsMedium.length)];
     wordGame.textContent = (randomMedium)
     wordGame1=wordGame.textContent
     wordSplitFun()
 }
 function gameHard() {
+    var randomHard = wordsHard[Math.floor(Math.random()*wordsHard.length)];
     wordGame.textContent = (randomHard)
     wordGame1=wordGame.textContent;
     wordSplitFun()
@@ -278,6 +267,7 @@ let loseMessage = document.getElementById("lose-message")
 let counterWin = 0;
 const winContainer = document.getElementById("youWinContainer")
 const loseContainer = document.getElementById("youLoseContainer")
+
 function WinOrLooseFun(){
     if(counterWin>=wordSplit.length){
         mainGame.classList.add("notShow")
@@ -285,6 +275,7 @@ function WinOrLooseFun(){
         assignName();
         stop();
         removeButtons()
+        deleteWordSplitFun()
         winMessage.innerHTML = userNameV + " you won in " + userStart
         clearDisplayScores()
     }
@@ -292,13 +283,12 @@ function WinOrLooseFun(){
         mainGame.classList.add("notShow")
         loseContainer.classList.remove("notShow")
         removeButtons()
+        deleteWordSplitFun()
         loseMessage.innerHTML = userNameV + " you lost in " + userStart
         clearDisplayScores()
     }
     return;
 }
-
-
 
 //Buttons
 
@@ -310,59 +300,12 @@ buttons.forEach(btn => {
             buttonValue=e.target.innerText;
             console.log(wordSplit)
             if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
-                //hangmanPictures.src=hangmanPicturesSrc;
                 e.target.classList.add("invisible");
                 console.log("yes")
                 for (i in wordSplit){
                     if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
-                        //e.target.classList.add("invisible");
-                        switch (i) {
-                            case "0":
-                                wordSplit1.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "1":
-                                wordSplit2.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "2":
-                                wordSplit3.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "3":
-                                wordSplit4.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "4":
-                                wordSplit5.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "5":
-                                wordSplit6.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "6":
-                                wordSplit7.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "7":
-                                wordSplit8.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "8":
-                                wordSplit9.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "9":
-                                wordSplit10.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                            case "10":
-                                wordSplit11.classList.remove("invisible");
-                                counterWin++;
-                                break;
-                        }
-                       // return; lo quito por si se repite la letra
+                            document.getElementById("word-guess-"+i).classList.remove("invisible");
+                            counterWin++;
                     }
                 }
             }else{
@@ -592,3 +535,74 @@ function removeButtons(){
 // }
 
 //userHistoric.push(newUser);
+
+
+
+// buttons.forEach(btn => {
+//     btn.addEventListener("click",(e)=> {
+//         if (e.target.matches(".buttons")){
+//             buttonValue=e.target.innerText;
+//             console.log(wordSplit)
+//             if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
+//                 e.target.classList.add("invisible");
+//                 console.log("yes")
+//                 for (i in wordSplit){
+//                     if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
+//                         switch (i) {
+//                             case "0":
+//                                 document.getElementById("word-guess-0").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "1":
+//                                 document.getElementById("word-guess-1").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "2":
+//                                 document.getElementById("word-guess-2").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "3":
+//                                 document.getElementById("word-guess-3").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "4":
+//                                 document.getElementById("word-guess-4").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "5":
+//                                 document.getElementById("word-guess-5").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "6":
+//                                 document.getElementById("word-guess-6").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "7":
+//                                 document.getElementById("word-guess-7").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "8":
+//                                 document.getElementById("word-guess-8").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "9":
+//                                 document.getElementById("word-guess-9").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                             case "10":
+//                                 document.getElementById("word-guess-10").classList.remove("invisible");
+//                                 counterWin++;
+//                                 break;
+//                         }
+//                        // return; lo quito por si se repite la letra
+//                     }
+//                 }
+//             }else{
+//                 e.target.classList.add("invisible");
+//                 hangmanPicturesArraySum()
+//                 hangmanPictures.src=hangmanPicturesSrc;
+//             }
+//         }
+//         WinOrLooseFun()
+//     })
+// });
