@@ -127,7 +127,7 @@ function updateList(items) {
 
 function createListElement({ name, score }) {
     const newListItem = document.createElement("li");
-    newListItem.innerText = "Username: " + name + "\nScore: " + score;
+    newListItem.innerHTML = "<div id='nameOfUser'>" + name + "</div>" + "<div id='nameOfScore'>" + score + "</div>";
     userScoresList.appendChild(newListItem);
 }
 
@@ -143,8 +143,10 @@ function historyClearing(){
     updateList(userHistoric)
 }
 
-let restartButton=document.getElementById("again-button")
-restartButton.addEventListener("click",restartFun)
+let restartButtonWin = document.getElementById("again-button")
+let restartButtonLose = document.getElementById("again-button-lose")
+restartButtonWin.addEventListener("click",restartFun)
+restartButtonLose.addEventListener("click",restartFun)
 let buttons1=document.querySelectorAll(".buttons")
 
 function restartFun(){

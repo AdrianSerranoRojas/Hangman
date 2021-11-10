@@ -183,6 +183,16 @@ ol{
     display: inline-block;
     height: 30px;
 }
+li {
+    margin:  15px;
+
+}
+#nameOfUser {
+    color: rebeccapurple;
+}
+#nameOfScore {
+    color: red;
+}
 #display-small h1 {
 text-align: center;
     margin-top: 40px;
@@ -216,8 +226,17 @@ text-align: center;
     width: 60px;
 }
 
+
 /*Play again Page*/
 #again-button {
+    height: 30px;
+    border: none;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border-radius: 5px;
+    font-weight: bolder;
+}
+#again-button-lose {
     height: 30px;
     border: none;
     color: var(--main-bg-color);
