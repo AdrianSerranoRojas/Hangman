@@ -5,6 +5,7 @@ window.onload = init;
 var mainChoose = document.getElementById("user-name-container")
 var mainGame = document.getElementById("game-container")
 var errors = document.getElementById("error")
+var buttons40 = document.getElementById("all-buttons")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",Start);
@@ -37,6 +38,7 @@ function Start(){
             writeSecs();
             id = setInterval(writeSecs,1000);
             document.querySelector("#currently-playing-name").innerText=userName.value;
+            createButtons()
         }
 }
 function validationStart(){
@@ -126,7 +128,7 @@ function updateList(items) {
 
 function createListElement({ name, score }) {
     const newListItem = document.createElement("li");
-    newListItem.innerText = "Username: " + name + "\nScore: " + score;
+    newListItem.innerHTML = "<div id='nameOfUser'>" + name + "</div>" + "<div id='nameOfScore'>" + score + "</div>";
     userScoresList.appendChild(newListItem);
 }
 
@@ -142,8 +144,10 @@ function historyClearing(){
     updateList(userHistoric)
 }
 
-let restartButton=document.getElementById("again-button")
-restartButton.addEventListener("click",restartFun)
+let restartButtonWin = document.getElementById("again-button")
+let restartButtonLose = document.getElementById("again-button-lose")
+restartButtonWin.addEventListener("click",restartFun)
+restartButtonLose.addEventListener("click",restartFun)
 let buttons1=document.querySelectorAll(".buttons")
 
 function restartFun(){
@@ -270,10 +274,12 @@ function WinOrLooseFun(){
         winContainer.classList.remove("notShow")
         assignName();
         stop();
+        removeButtons()
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
         loseContainer.classList.remove("notShow")
+        removeButtons()
     }
     return;
 }
@@ -368,8 +374,17 @@ function hangmanPicturesArraySum(){
 
 
 //CREATE BUTTONS
+let btnbtn;
 
+function createButtons() {
+    btnbtn = document.createElement("div")
+    btnbtn.innerHTML = '<button class="buttons" id="button-A">A</button><button class="buttons" id="button-B">B</button><button class="buttons" id="button-C">C</button><button class="buttons" id="button-D">D</button><button class="buttons" id="button-E">E</button><button class="buttons" id="button-F">F</button><button class="buttons" id="button-G">G</button><button class="buttons" id="button-H">H</button><button class="buttons" id="button-I">I</button><button class="buttons" id="button-J">J</button><button class="buttons" id="button-K">K</button><button class="buttons" id="button-L">L</button><button class="buttons" id="button-M">M</button><button class="buttons" id="button-N">N</button><button class="buttons" id="button-Ñ">Ñ</button><button class="buttons" id="button-O">O</button><button class="buttons" id="button-P">P</button><button class="buttons" id="button-Q">Q</button><button class="buttons" id="button-R">R</button><button class="buttons" id="button-S">S</button><button class="buttons" id="button-T">T</button><button class="buttons" id="button-U">U</button><button class="buttons" id="button-V">V</button><button class="buttons" id="button-W">W</button><button class="buttons" id="button-X">X</button><button class="buttons" id="button-Y">Y</button><button class="buttons" id="button-Z">Z</button>'
+    buttons40.appendChild(btnbtn)
+}
 
+function removeButtons(){
+    buttons40.removeChild(btnbtn)
+}
 
 // var element;
 
