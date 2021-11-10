@@ -9,8 +9,8 @@ var buttons40 = document.getElementById("all-buttons")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",Start);
-    document.querySelector("#pause-button").addEventListener("click",stop);
-    document.querySelector("#reset-button").addEventListener("click",reset);
+    // document.querySelector("#pause-button").addEventListener("click",stop);
+    // document.querySelector("#reset-button").addEventListener("click",reset);
     h = 0;
     m = 0;
     s = 0;
@@ -90,7 +90,6 @@ var userHistoric = [];
 const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
-const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
 let userStart;
 
 function assignName(){
