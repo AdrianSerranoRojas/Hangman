@@ -1,4 +1,4 @@
-//crono + displays
+//Start + displays
 window.onload = init;
 
 
@@ -8,13 +8,13 @@ var errors = document.getElementById("error")
 var buttons40 = document.getElementById("all-buttons")
 
 function init(){
-    document.querySelector("#start-button").addEventListener("click",crono);
+    document.querySelector("#start-button").addEventListener("click",Start);
     document.querySelector("#pause-button").addEventListener("click",stop);
     document.querySelector("#reset-button").addEventListener("click",reset);
     h = 0;
     m = 0;
     s = 0;
-    document.getElementById("hms").innerHTML="00:00:00";
+    //document.getElementById("hms").innerHTML="00:00:00";
     loadLocalStorage();
 }
 
@@ -30,17 +30,18 @@ function loadLocalStorage(){
     }
 }
 
-function crono(){
-    if (validationCrono()==true){
+function Start(){
+    if (validationStart()==true){
             mainChoose.classList.add("notShow") //choose a user name page display none
             mainGame.classList.remove("notShow") //game display block
-            document.querySelector("#start-button").removeEventListener("click",crono);
+            document.querySelector("#start-button").removeEventListener("click",Start);
             writeSecs();
             id = setInterval(writeSecs,1000);
+            showDisplayScores();
             createButtons()
         }
 }
-function validationCrono(){
+function validationStart(){
     if (!userName.value == null || !userName.value.length==0 ){
         if (easyButton.checked || mediumButton.checked || hardButton.checked) {
             return true;
@@ -64,14 +65,22 @@ function writeSecs(){
 }
 function stop(){
     clearInterval(id);
-    document.querySelector("#start-button").addEventListener("click",crono);
+    document.querySelector("#start-button").addEventListener("click",Start);
 
 }
 function reset(){
     clearInterval(id);
-    document.getElementById("hms").innerHTML="00:00:00";
     h=0;m=0;s=0;
-    document.querySelector("#start-button").addEventListener("click",crono);
+    document.querySelector("#start-button").addEventListener("click",Start);
+}
+function clearDisplayScores(){
+    clearInterval(id);
+    document.querySelector("#currently-playing-name").innerText=" ";
+    document.getElementById("hms").innerHTML=" ";
+}
+function showDisplayScores(){
+    document.querySelector("#currently-playing-name").innerText=userName.value;
+    document.getElementById("hms").innerHTML="00:00:00";
 }
 //Objects
 
@@ -82,11 +91,12 @@ const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
 const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
+let userStart;
 
 function assignName(){
     userNameV=userName.value;
-    userCrono=document.getElementById("hms").innerHTML;
-    createUser(userNameV,userCrono);
+    userStart=document.getElementById("hms").innerHTML;
+    createUser(userNameV,userStart);
     userHistoric.push(newUser);
     userScoreOr()
     updateList(userHistoric);
@@ -140,7 +150,7 @@ clearHistory.addEventListener("click", historyClearing)
 
 function historyClearing(){
     localStorage.clear()
-    updateList(userHistoric)
+    userScoresList.innerHTML = null;
 }
 
 let restartButtonWin = document.getElementById("again-button")
@@ -224,9 +234,17 @@ var wordSplit10 = document.getElementById("word-guess-10")
 
 var wordGame1="";
 let wordSplit;
-
+let wordSplitcontainer = document.querySelector("#word-split-container")
+let wordSplitI;
 function wordSplitFun(){
     wordSplit = wordGame1.split("");
+for (i in wordSplit){
+    wordSplitI = document.createElement("div")
+    console.log(wordSplit[i]);
+    wordSplitcontainer.appendChild(wordSplitI)
+}
+
+
     wordSplit1.textContent = wordSplit[0]
     wordSplit2.textContent = wordSplit[1]
     wordSplit3.textContent = wordSplit[2]
@@ -243,7 +261,6 @@ function gameEasy() {
     wordGame.textContent = (randomEasy)
     wordGame1 = wordGame.textContent
     wordSplitFun()
-    
 }
 function gameMedium() {
     wordGame.textContent = (randomMedium)
@@ -269,15 +286,18 @@ function WinOrLooseFun(){
         stop();
         removeButtons()
         winMessage.innerHTML = userNameV + " you won in " + userStart
+        clearDisplayScores()
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
         loseContainer.classList.remove("notShow")
         removeButtons()
         loseMessage.innerHTML = userNameV + " you lost in " + userStart
+        clearDisplayScores()
     }
     return;
 }
+
 
 
 //Buttons
@@ -363,7 +383,6 @@ let hangmanPicturesSrc=hangmanPicturesArray[contadorI]
 hangmanPictures.src=hangmanPicturesSrc;
 
 function hangmanPicturesArraySum(){
-    console.log("no")
     contadorI++;
     hangmanPicturesSrc=hangmanPicturesArray[contadorI];
 }
