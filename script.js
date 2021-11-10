@@ -14,32 +14,38 @@ function init(){
     m = 0;
     s = 0;
     document.getElementById("hms").innerHTML="00:00:00";
+    loadLocalStorage();
+}
 
+function loadLocalStorage(){
     if (localStorage.getItem(HISTORIC_KEY) !== null) {
         userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
         console.log("YES");
         console.log(userHistoric)
         printScore();
-        }
-        else{
-            console.log("NO!")
-        }
+    }
+    else{
+        console.log("NO!")
+    }
 }
-//
+
 function crono(){
-    if (!userName.value == null || !userName.value.length==0 ){
-        if (easyButton.checked || mediumButton.checked || hardButton.checked) {
+    if (validationCrono()==true){
             mainChoose.classList.add("notShow") //choose a user name page display none
             mainGame.classList.remove("notShow") //game display block
             document.querySelector("#start-button").removeEventListener("click",crono);
             writeSecs();
             id = setInterval(writeSecs,1000);
         }
-        else {
+}
+function validationCrono(){
+    if (!userName.value == null || !userName.value.length==0 ){
+        if (easyButton.checked || mediumButton.checked || hardButton.checked) {
+            return true;
+        }else {
             errors.textContent = "Select a difficulty"
         }
-    }
-    else {
+    }else {
         errors.textContent = "Write a name"
     }
 }
@@ -49,11 +55,9 @@ function writeSecs(){
     if (s>59){m++;s=0;}
     if (m>59){h++;m=0;}
     if (h>24){h=0;}
-
     if (s<10){sAux="0"+s;}else{sAux=s;}
     if (m<10){mAux="0"+m;}else{mAux=m;}
     if (h<10){hAux="0"+h;}else{hAux=h;}
-
     document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux;
 }
 function stop(){
@@ -71,8 +75,6 @@ function reset(){
 
 const HISTORIC_KEY = "historic";
 var userHistoric = [];
-//const HISTORIC_KEY = "myhistorickey";
-
 
 //clear history
 let clearHistory = document.getElementById("clear-button")
@@ -84,19 +86,21 @@ function historyClearing(){
     printScore()
 }
 
-
 const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
 const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
 
-function assignName(){
+function assignName(){//and save on localStorage
     userNameV=userName.value;
     userCrono=document.getElementById("hms").innerHTML;
     createUser(userNameV,userCrono);
     userHistoric.push(newUser);
-    localStorage.setItem(HISTORIC_KEY, JSON.stringify(userHistoric));
+    saveLocalStorage()
     printScore();
+}
+function saveLocalStorage(){
+    localStorage.setItem(HISTORIC_KEY, JSON.stringify(userHistoric));
 }
 function createUser(name = "default", score = "Currently playing...") {
     console.log(userHistoric)
@@ -105,7 +109,6 @@ function createUser(name = "default", score = "Currently playing...") {
         score: score
     };
 }
-//const newUser = createUser();
 
 //RANKING
 
@@ -174,11 +177,6 @@ function userScoreOr(){
     });
 }
 
-
-
-
-
-
 //restart
 let restartButton=document.getElementById("again-button")
 restartButton.addEventListener("click",restartFun)
@@ -212,52 +210,6 @@ function restartFun(){
     hangmanPicturesSrc=hangmanPicturesArray[contadorI]
     hangmanPictures.src=hangmanPicturesSrc;
 }
-
-
-// const HISTORIC_KEY = "historic";
-
-// let usersList = document.getElementById("historicList");
-// let btnAdd = document.getElementById("btnAdd");
-
-// let historicList = [];
-
-// window.onload = (e) => {
-//   initDOMRefs();
-//   historicList = [];
-
-//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
-//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
-//     updateList(historicList);
-//   }
-// };
-
-// function initDOMRefs() {
-//   usersList = document.getElementById("historicList");
-//   btnAdd = document.getElementById("btnAdd");
-//   btnAdd.addEventListener("click", (e) => {
-//     addNewUser();
-//   });
-// }
-
-// function createListElement({ username, score }) {
-//   const newListItem = document.createElement("li");
-//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
-//   usersList.appendChild(newListItem);
-// }
-
-// function updateList(items) {
-//   usersList.innerHTML = null;
-//   items.forEach((i) => {
-//     createListElement({ username: i.username, score: i.score });
-//   });
-// }
-
-// function addNewUser() {
-//   const newUser = { username: "John", score: 100 };
-//   historicList.push(newUser);
-//   updateList(historicList);
-//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
-// }
 
 
 //random words
@@ -303,9 +255,6 @@ var wordSplit7 = document.getElementById("word-guess-7")
 var wordSplit8 = document.getElementById("word-guess-8")
 var wordSplit9 = document.getElementById("word-guess-9")
 var wordSplit10 = document.getElementById("word-guess-10")
-
-
-
 
 var wordGame1="";
 let wordSplit;
@@ -461,3 +410,120 @@ function hangmanPicturesArraySum(){
     contadorI++;
     hangmanPicturesSrc=hangmanPicturesArray[contadorI];
 }
+
+
+//NUMS PAD
+
+
+// //function numsPad(){
+//         window.addEventListener("keydown", (e) => {
+//             if(mainGame.matches("notShow")==false){
+//                 if (
+//                 e.key === "a" ||
+//                 e.key === "b" ||
+//                 e.key === "c" ||
+//                 e.key === "d" ||
+//                 e.key === "e" ||
+//                 e.key === "f" ||
+//                 e.key === "g" ||
+//                 e.key === "h" ||
+//                 e.key === "i" ||
+//                 e.key === "j" ||
+//                 e.key === "k" ||
+//                 e.key === "l" ||
+//                 e.key === "m" ||
+//                 e.key === "n" ||
+//                 e.key === "ñ" ||
+//                 e.key === "o" ||
+//                 e.key === "p" ||
+//                 e.key === "q" ||
+//                 e.key === "r" ||
+//                 e.key === "s" ||
+//                 e.key === "t" ||
+//                 e.key === "u" ||
+//                 e.key === "v" ||
+//                 e.key === "w" ||
+//                 e.key === "x" ||
+//                 e.key === "y" ||
+//                 e.key === "z"
+//                 ) {
+//                 clickButtonEl(e.key);
+//                 }
+//             }
+//         });
+// //}
+
+
+// function keyPadRemove(){
+//     window.removeEventListener("keydown", (e))
+//     console.log("eliminado")
+// }
+
+// function clickButtonEl(key) {
+//     buttons1.forEach((button) => {
+//         if(mainGame.matches("notShow")==false){
+//             if (button.innerText === key.toUpperCase()) {
+//                 console.log(key.toUpperCase());
+//                 button.click();
+//             }
+//         }
+//     });
+// }
+// function clickOperation(key) {
+//     operator.forEach((operation) => {
+//     if (operation.innerText === key) {
+//         operation.click();
+//     }
+//     });
+// }
+// function clickEqual() {
+//     equal.click();
+// }
+
+
+
+// const HISTORIC_KEY = "historic";
+
+// let usersList = document.getElementById("historicList");
+// let btnAdd = document.getElementById("btnAdd");
+
+// let historicList = [];
+
+// window.onload = (e) => {
+//   initDOMRefs();
+//   historicList = [];
+
+//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
+//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
+//     updateList(historicList);
+//   }
+// };
+
+// function initDOMRefs() {
+//   usersList = document.getElementById("historicList");
+//   btnAdd = document.getElementById("btnAdd");
+//   btnAdd.addEventListener("click", (e) => {
+//     addNewUser();
+//   });
+// }
+
+// function createListElement({ username, score }) {
+//   const newListItem = document.createElement("li");
+//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
+//   usersList.appendChild(newListItem);
+// }
+
+// function updateList(items) {
+//   usersList.innerHTML = null;
+//   items.forEach((i) => {
+//     createListElement({ username: i.username, score: i.score });
+//   });
+// }
+
+// function addNewUser() {
+//   const newUser = { username: "John", score: 100 };
+//   historicList.push(newUser);
+//   updateList(historicList);
+//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
+// }
+
