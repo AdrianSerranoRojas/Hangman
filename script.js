@@ -255,8 +255,9 @@ function gameHard() {
     wordGame1=wordGame.textContent;
     wordSplitFun()
 }
-
 //counter to win or loose
+let winMessage = document.getElementById("win-message")
+let loseMessage = document.getElementById("lose-message")
 let counterWin = 0;
 const winContainer = document.getElementById("youWinContainer")
 const loseContainer = document.getElementById("youLoseContainer")
@@ -267,11 +268,13 @@ function WinOrLooseFun(){
         assignName();
         stop();
         removeButtons()
+        winMessage.innerHTML = userNameV + " you won in " + userStart
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
         loseContainer.classList.remove("notShow")
         removeButtons()
+        loseMessage.innerHTML = userNameV + " you lost in " + userStart
     }
     return;
 }
