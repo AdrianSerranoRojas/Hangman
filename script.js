@@ -14,7 +14,7 @@ function init(){
     h = 0;
     m = 0;
     s = 0;
-    document.getElementById("hms").innerHTML="00:00:00";
+    //document.getElementById("hms").innerHTML="00:00:00";
     loadLocalStorage();
 }
 
@@ -37,7 +37,7 @@ function Start(){
             document.querySelector("#start-button").removeEventListener("click",Start);
             writeSecs();
             id = setInterval(writeSecs,1000);
-            document.querySelector("#currently-playing-name").innerText=userName.value;
+            showDisplayScores();
             createButtons()
         }
 }
@@ -74,6 +74,15 @@ function reset(){
     h=0;m=0;s=0;
     document.querySelector("#start-button").addEventListener("click",Start);
 }
+function clearDisplayScores(){
+    clearInterval(id);
+    document.querySelector("#currently-playing-name").innerText=" ";
+    document.getElementById("hms").innerHTML=" ";
+}
+function showDisplayScores(){
+    document.querySelector("#currently-playing-name").innerText=userName.value;
+    document.getElementById("hms").innerHTML="00:00:00";
+}
 //Objects
 
 const HISTORIC_KEY = "historic";
@@ -83,6 +92,7 @@ const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
 const newUserI=document.querySelector("#pause-button").addEventListener("click",assignName);
+let userStart;
 
 function assignName(){
     userNameV=userName.value;
@@ -141,7 +151,7 @@ clearHistory.addEventListener("click", historyClearing)
 
 function historyClearing(){
     localStorage.clear()
-    updateList(userHistoric)
+    userScoresList.innerHTML = null;
 }
 
 let restartButtonWin = document.getElementById("again-button")
@@ -275,14 +285,19 @@ function WinOrLooseFun(){
         assignName();
         stop();
         removeButtons()
+        clearDisplayScores()
+
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
         loseContainer.classList.remove("notShow")
         removeButtons()
+        clearDisplayScores()
+
     }
     return;
 }
+
 
 
 //Buttons
