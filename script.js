@@ -36,6 +36,8 @@ function crono(){
             document.querySelector("#start-button").removeEventListener("click",crono);
             writeSecs();
             id = setInterval(writeSecs,1000);
+            elem()
+            createButtons()
         }
 }
 function validationCrono(){
@@ -412,10 +414,63 @@ function hangmanPicturesArraySum(){
 }
 
 
+//CREATE BUTTONS
+
+
+
+// var element;
+
+// function elem(type, elemID, elemClass) {
+//     element = document.createElement(type)
+//     if(elemID != null) element.setAttribute("id", elemID)
+//     if(elemClass != null) element.setAttribute("class", elemClass)
+//     return element
+// }
+
+// function createButtons() {
+//                     [elem("button", "button-A", "buttons"),
+//                     elem("button", "button-B", "buttons"),
+//                     elem("button", "button-C", "buttons"),
+//                     elem("button", "button-D", "buttons"),
+//                     elem("button", "button-E", "buttons"),
+//                     elem("button", "button-F", "buttons"),
+//                     elem("button", "button-G", "buttons"),
+//                     elem("button", "button-H", "buttons"),
+//                     elem("button", "button-I", "buttons"),
+//                     elem("button", "button-J", "buttons"),
+//                     elem("button", "button-K", "buttons"),
+//                     elem("button", "button-L", "buttons"),
+//                     elem("button", "button-M", "buttons"),
+//                     elem("button", "button-N", "buttons"),
+//                     elem("button", "button-O", "buttons"),
+//                     elem("button", "button-P", "buttons"),
+//                     elem("button", "button-Q", "buttons"),
+//                     elem("button", "button-R", "buttons"),
+//                     elem("button", "button-S", "buttons"),
+//                     elem("button", "button-T", "buttons"),
+//                     elem("button", "button-U", "buttons"),
+//                     elem("button", "button-V", "buttons"),
+//                     elem("button", "button-W", "buttons"),
+//                     elem("button", "button-X", "buttons"),
+//                     elem("button", "button-Y", "buttons"),
+//                     elem("button", "button-Z", "buttons"),
+// ]
+//     buttons.appendChild(element)
+// }
+
+//Click Button
+// function clickButton {
+//     if(!$(mainGame).hasClass("notShow")){
+//     for (i=0; i<buttons1; i++){
+//         buttons1[i].addEventListener("keydown", clicking()){
+
+//         }}
+
+//     else {buttons1[i].removeEventListener}
+// }
+
 //NUMS PAD
-
-
-// //function numsPad(){
+//function numsPad(){
 //         window.addEventListener("keydown", (e) => {
 //             if(mainGame.matches("notShow")==false){
 //                 if (
@@ -451,7 +506,7 @@ function hangmanPicturesArraySum(){
 //                 }
 //             }
 //         });
-// //}
+// // //}
 
 
 // function keyPadRemove(){
@@ -479,6 +534,7 @@ function hangmanPicturesArraySum(){
 // function clickEqual() {
 //     equal.click();
 // }
+
 
 
 
