@@ -339,6 +339,8 @@ function WinOrLooseFun(){
 
 //Buttons
 
+
+
 let buttons = document.querySelectorAll("#all-buttons");
 
 buttons.forEach(btn => {
