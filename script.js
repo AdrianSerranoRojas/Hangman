@@ -18,14 +18,10 @@ function init(){
 function loadLocalStorage(){
     if (localStorage.getItem(HISTORIC_KEY) !== null) {
         userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
-        console.log("YES");
         selectDifficult();
         updateListEasy(userHistoricEasy);
         updateListMedium(userHistoricMedium);
         updateListHard(userHistoricHard);
-    }
-    else{
-        console.log("NO!")
     }
 }
 let userHistoricEasy = [];
@@ -154,7 +150,6 @@ function updateListEasy(items) {
     items.forEach((i) => {
     createListElementEasy({ name: i.name, score: i.score, difficult: i.difficult });
     });
-    console.log(userHistoricEasy)
 }
 function updateListMedium(items) {
     userScoresListMedium.innerHTML = null;
@@ -200,16 +195,14 @@ function historyClearing(){
     userScoresListHard.innerHTML = null;
 }
 
-let restartButtonWin = document.getElementById("again-button")
-let restartButtonLose = document.getElementById("again-button-lose")
-//restartButtonWin.addEventListener("click",restartFun)
-restartButtonLose.addEventListener("click",restartFun)
+
+
 let buttons1=document.getElementsByClassName("buttons")
 
 function restartFun(){
     reset();
+    clearDisplayBig()
     loseContainer.classList.add("notShow")
-    winContainer.classList.add("notShow")
     mainChoose.classList.remove("notShow")
     easyButton.checked=false;
     mediumButton.checked=false;
@@ -466,10 +459,14 @@ function createYouWinPage(){
     buttonYouWin.setAttribute("id","again-button");
     buttonYouWin.textContent = "Play again";
     divContainer.appendChild(buttonYouWin);
+
+    let restartButtonWin = document.getElementById("again-button")
+    let restartButtonLose = document.getElementById("again-button-lose")
+    restartButtonWin.addEventListener("click",restartFun)
+    restartButtonLose.addEventListener("click",restartFun)
 }
 
 function clearDisplayBig(){
-    while (document.getElementById("display-big").firstChild) {
-        document.getElementById("display-big").removeChild(document.getElementById("display-big").firstChild)
+        document.getElementById("display-big").removeChild(document.getElementById("display-big").lastChild)
     }
-}
+
