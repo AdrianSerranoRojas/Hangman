@@ -9,12 +9,9 @@ var buttons40 = document.getElementById("all-buttons")
 
 function init(){
     document.querySelector("#start-button").addEventListener("click",Start);
-    // document.querySelector("#pause-button").addEventListener("click",stop);
-    // document.querySelector("#reset-button").addEventListener("click",reset);
     h = 0;
     m = 0;
     s = 0;
-    //document.getElementById("hms").innerHTML="00:00:00";
     loadLocalStorage();
 }
 
@@ -58,8 +55,9 @@ function Start(){
             createButtons()
         }
 }
+///^[A-Z]{1}[a-zA-Z\d]{1,15}$/.test(userName.value
 function validationStart(){
-    if (!userName.value == null || !userName.value.length==0 ){
+    if ( /[a-zA-Z\d]{1,15}$/.test(userName.value) ){
         if (easyButton.checked || mediumButton.checked || hardButton.checked) {
             return true;
         }else {
