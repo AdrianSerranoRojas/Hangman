@@ -22,12 +22,29 @@ function loadLocalStorage(){
     if (localStorage.getItem(HISTORIC_KEY) !== null) {
         userHistoric = JSON.parse(localStorage.getItem(HISTORIC_KEY));
         console.log("YES");
-        console.log(userHistoric);
-        updateList(userHistoric);
+        selectDifficult();
+        updateListEasy(userHistoricEasy);
+        updateListMedium(userHistoricMedium);
+        updateListHard(userHistoricHard);
     }
     else{
         console.log("NO!")
     }
+}
+let userHistoricEasy = [];
+let userHistoricMedium = [];
+let userHistoricHard = [];
+
+function selectDifficult(){
+    userHistoricEasy = userHistoric.filter(item => {
+        return item.difficult === "easy"
+    })
+    userHistoricMedium = userHistoric.filter(item => {
+        return item.difficult === "medium"
+    })
+    userHistoricHard = userHistoric.filter(item => {
+        return item.difficult === "hard"
+    })
 }
 
 function Start(){
@@ -91,22 +108,26 @@ const userName=document.querySelector("#user-name-input");
 let userNameV;
 let newUser;
 let userStart;
+let userDiff;
 
 function assignName(){
     userNameV=userName.value;
     userStart=document.getElementById("hms").innerHTML;
-    createUser(userNameV,userStart);
+    createUser(userNameV,userStart,userDiff);
     userHistoric.push(newUser);
     userScoreOr()
-    updateList(userHistoric);
+    selectDifficult()
+    updateListEasy(userHistoricEasy);
+    updateListMedium(userHistoricMedium)
+    updateListHard(userHistoricHard)
     saveLocalStorage()
 }
 
-function createUser(name = "default", score = "Currently playing...") {
-    console.log(userHistoric)
+function createUser(name = "default", score = "Currently playing...", difficult = "default") {
         newUser = {
         name: name,
-        score: score
+        score: score,
+        difficult: difficult
     };
 }
 
@@ -125,19 +146,46 @@ function userScoreOr(){
     });
 }
 
-let userScoresList = document.querySelector("#users-scores-list")
 
-function updateList(items) {
-    userScoresList.innerHTML = null;
+let userScoresListEasy = document.querySelector("#users-scores-list-easy")
+let userScoresListMedium= document.querySelector("#users-scores-list-medium")
+let userScoresListHard = document.querySelector("#users-scores-list-hard")
+
+function updateListEasy(items) {
+    userScoresListEasy.innerHTML = null;
     items.forEach((i) => {
-    createListElement({ name: i.name, score: i.score });
+    createListElementEasy({ name: i.name, score: i.score, difficult: i.difficult });
+    });
+    console.log(userHistoricEasy)
+}
+function updateListMedium(items) {
+    userScoresListMedium.innerHTML = null;
+    items.forEach((i) => {
+    createListElementMedium({ name: i.name, score: i.score, difficult: i.difficult });
+    });
+}
+function updateListHard(items) {
+    userScoresListHard.innerHTML = null;
+    items.forEach((i) => {
+    createListElementHard({ name: i.name, score: i.score, difficult: i.difficult });
     });
 }
 
-function createListElement({ name, score }) {
+
+function createListElementEasy({ name, score }) {
     const newListItem = document.createElement("li");
     newListItem.innerHTML = "<div id='nameOfUser'>" + name + "</div>" + "<div id='nameOfScore'>" + score + "</div>";
-    userScoresList.appendChild(newListItem);
+    userScoresListEasy.appendChild(newListItem);
+}
+function createListElementMedium({ name, score }) {
+    const newListItem = document.createElement("li");
+    newListItem.innerHTML = "<div id='nameOfUser'>" + name + "</div>" + "<div id='nameOfScore'>" + score + "</div>";
+    userScoresListMedium.appendChild(newListItem);
+}
+function createListElementHard({ name, score }) {
+    const newListItem = document.createElement("li");
+    newListItem.innerHTML = "<div id='nameOfUser'>" + name + "</div>" + "<div id='nameOfScore'>" + score + "</div>";
+    userScoresListHard.appendChild(newListItem);
 }
 
 function saveLocalStorage(){
@@ -149,7 +197,9 @@ clearHistory.addEventListener("click", historyClearing)
 
 function historyClearing(){
     localStorage.clear()
-    userScoresList.innerHTML = null;
+    userScoresListEasy.innerHTML = null;
+    userScoresListMedium.innerHTML = null;
+    userScoresListHard.innerHTML = null;
 }
 
 let restartButtonWin = document.getElementById("again-button")
@@ -242,6 +292,7 @@ function gameEasy() {
     wordGame.textContent = (randomEasy)
     wordGame1 = wordGame.textContent
     wordSplitFun()
+    userDiff = "easy";
 }
 function gameMedium() {
     deleteWordSplitFun()
@@ -249,6 +300,7 @@ function gameMedium() {
     wordGame.textContent = (randomMedium)
     wordGame1=wordGame.textContent
     wordSplitFun()
+    userDiff = "medium";
 }
 function gameHard() {
     deleteWordSplitFun()
@@ -256,6 +308,7 @@ function gameHard() {
     wordGame.textContent = (randomHard)
     wordGame1=wordGame.textContent;
     wordSplitFun()
+    userDiff = "hard";
 }
 //counter to win or loose
 let winMessage = document.getElementById("win-message")
@@ -294,10 +347,9 @@ buttons.forEach(btn => {
     btn.addEventListener("click",(e)=> {
         if (e.target.matches(".buttons")){
             buttonValue=e.target.innerText;
-            console.log(wordSplit)
             if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
                 e.target.classList.add("invisible");
-                console.log("yes")
+
                 for (i in wordSplit){
                     if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
                             document.getElementById("word-guess-"+i).classList.remove("invisible");

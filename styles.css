@@ -173,7 +173,17 @@ form{
     overflow-x: hidden;
     overflow-y: auto;
     margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px;
 }
+#score-difficulty {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
 ol{
     display: inline-block;
     height: 30px;
