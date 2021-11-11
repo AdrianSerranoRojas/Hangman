@@ -214,7 +214,8 @@ var wordGame = document.getElementById("word-guess")
 var wordGame1="";
 let wordSplit;
 let wordSplitcontainer = document.querySelector("#word-split-container")
-let wordSplitcontainerLenght = document.querySelectorAll("#word-split-container")
+let wordSplitcontainerLenght = document.getElementById("word-split-container")
+let wordSplitDiv = document.getElementsByClassName("underline")
 let wordSplitI;
 let wordSplitX;
 
@@ -229,32 +230,36 @@ for (i in wordSplit){
     wordSplitX.setAttribute("id","word-guess-"+i)
     wordSplitX.textContent=wordSplit[i]
     wordSplitI.appendChild(wordSplitX)
-
     console.log(wordSplit[i]);
     wordSplitcontainer.appendChild(wordSplitI)
     }
 }
 
 function deleteWordSplitFun(){
-    console.log(wordSplitcontainerLenght.length)
-    while (wordSplitcontainerLenght.length>=0) {
+    console.log(wordSplitDiv)
+    console.log(wordSplitDiv.length)
+    console.log(wordSplitcontainer)
+    while (wordSplitDiv.length>=1) {
     wordSplitcontainer.removeChild(wordSplitcontainer.lastChild)
     }
 }
 
 function gameEasy() {
+    deleteWordSplitFun()
     var randomEasy = wordsEasy[Math.floor(Math.random()*wordsEasy.length)];
     wordGame.textContent = (randomEasy)
     wordGame1 = wordGame.textContent
     wordSplitFun()
 }
 function gameMedium() {
+    deleteWordSplitFun()
     var randomMedium = wordsMedium[Math.floor(Math.random()*wordsMedium.length)];
     wordGame.textContent = (randomMedium)
     wordGame1=wordGame.textContent
     wordSplitFun()
 }
 function gameHard() {
+    deleteWordSplitFun()
     var randomHard = wordsHard[Math.floor(Math.random()*wordsHard.length)];
     wordGame.textContent = (randomHard)
     wordGame1=wordGame.textContent;
