@@ -156,7 +156,7 @@ let restartButtonWin = document.getElementById("again-button")
 let restartButtonLose = document.getElementById("again-button-lose")
 restartButtonWin.addEventListener("click",restartFun)
 restartButtonLose.addEventListener("click",restartFun)
-let buttons1=document.querySelectorAll(".buttons")
+let buttons1=document.getElementsByClassName("buttons")
 
 function restartFun(){
     reset();
@@ -166,9 +166,6 @@ function restartFun(){
     easyButton.checked=false;
     mediumButton.checked=false;
     hardButton.checked=false;
-    buttons1.forEach(btn=>{
-        btn.classList.remove("invisible")
-    })
     counterWin=0;
     contadorI=0;
     userName.value="";
@@ -214,7 +211,6 @@ var wordGame = document.getElementById("word-guess")
 var wordGame1="";
 let wordSplit;
 let wordSplitcontainer = document.querySelector("#word-split-container")
-let wordSplitcontainerLenght = document.getElementById("word-split-container")
 let wordSplitDiv = document.getElementsByClassName("underline")
 let wordSplitI;
 let wordSplitX;
@@ -230,15 +226,11 @@ for (i in wordSplit){
     wordSplitX.setAttribute("id","word-guess-"+i)
     wordSplitX.textContent=wordSplit[i]
     wordSplitI.appendChild(wordSplitX)
-    console.log(wordSplit[i]);
     wordSplitcontainer.appendChild(wordSplitI)
     }
 }
 
 function deleteWordSplitFun(){
-    console.log(wordSplitDiv)
-    console.log(wordSplitDiv.length)
-    console.log(wordSplitcontainer)
     while (wordSplitDiv.length>=1) {
     wordSplitcontainer.removeChild(wordSplitcontainer.lastChild)
     }
@@ -338,275 +330,67 @@ function hangmanPicturesArraySum(){
 //CREATE BUTTONS
 let btnbtn;
 
+const fragment = document.createDocumentFragment()
+const btnArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
 function createButtons() {
-    btnbtn = document.createElement("div")
-    btnbtn.innerHTML = '<button class="buttons" id="button-A">A</button><button class="buttons" id="button-B">B</button><button class="buttons" id="button-C">C</button><button class="buttons" id="button-D">D</button><button class="buttons" id="button-E">E</button><button class="buttons" id="button-F">F</button><button class="buttons" id="button-G">G</button><button class="buttons" id="button-H">H</button><button class="buttons" id="button-I">I</button><button class="buttons" id="button-J">J</button><button class="buttons" id="button-K">K</button><button class="buttons" id="button-L">L</button><button class="buttons" id="button-M">M</button><button class="buttons" id="button-N">N</button><button class="buttons" id="button-Ñ">Ñ</button><button class="buttons" id="button-O">O</button><button class="buttons" id="button-P">P</button><button class="buttons" id="button-Q">Q</button><button class="buttons" id="button-R">R</button><button class="buttons" id="button-S">S</button><button class="buttons" id="button-T">T</button><button class="buttons" id="button-U">U</button><button class="buttons" id="button-V">V</button><button class="buttons" id="button-W">W</button><button class="buttons" id="button-X">X</button><button class="buttons" id="button-Y">Y</button><button class="buttons" id="button-Z">Z</button>'
-    buttons40.appendChild(btnbtn)
+    for (i in btnArray){
+        let btnCreate = document.createElement("button");
+        btnCreate.classList.add("buttons");
+        btnCreate.setAttribute("id","button-"+btnArray[i]);
+        btnCreate.textContent=btnArray[i];
+        fragment.appendChild(btnCreate);
+    }
+buttons40.appendChild(fragment);
 }
-
 function removeButtons(){
-    buttons40.removeChild(btnbtn)
+    while(buttons1.length>=1){
+    buttons40.removeChild(buttons40.lastChild)
+    }
 }
 
-// var element;
-
-// function elem(type, elemID, elemClass) {
-//     element = document.createElement(type)
-//     if(elemID != null) element.setAttribute("id", elemID)
-//     if(elemClass != null) element.setAttribute("class", elemClass)
-//     return element
-// }
-
-// function createButtons() {
-//                     [elem("button", "button-A", "buttons"),
-//                     elem("button", "button-B", "buttons"),
-//                     elem("button", "button-C", "buttons"),
-//                     elem("button", "button-D", "buttons"),
-//                     elem("button", "button-E", "buttons"),
-//                     elem("button", "button-F", "buttons"),
-//                     elem("button", "button-G", "buttons"),
-//                     elem("button", "button-H", "buttons"),
-//                     elem("button", "button-I", "buttons"),
-//                     elem("button", "button-J", "buttons"),
-//                     elem("button", "button-K", "buttons"),
-//                     elem("button", "button-L", "buttons"),
-//                     elem("button", "button-M", "buttons"),
-//                     elem("button", "button-N", "buttons"),
-//                     elem("button", "button-O", "buttons"),
-//                     elem("button", "button-P", "buttons"),
-//                     elem("button", "button-Q", "buttons"),
-//                     elem("button", "button-R", "buttons"),
-//                     elem("button", "button-S", "buttons"),
-//                     elem("button", "button-T", "buttons"),
-//                     elem("button", "button-U", "buttons"),
-//                     elem("button", "button-V", "buttons"),
-//                     elem("button", "button-W", "buttons"),
-//                     elem("button", "button-X", "buttons"),
-//                     elem("button", "button-Y", "buttons"),
-//                     elem("button", "button-Z", "buttons"),
-// ]
-//     buttons.appendChild(element)
-// }
-
-//Click Button
-// function clickButton {
-//     if(!$(mainGame).hasClass("notShow")){
-//     for (i=0; i<buttons1; i++){
-//         buttons1[i].addEventListener("keydown", clicking()){
-
-//         }}
-
-//     else {buttons1[i].removeEventListener}
-// }
 
 //NUMS PAD
-//function numsPad(){
-//         window.addEventListener("keydown", (e) => {
-//             if(mainGame.matches("notShow")==false){
-//                 if (
-//                 e.key === "a" ||
-//                 e.key === "b" ||
-//                 e.key === "c" ||
-//                 e.key === "d" ||
-//                 e.key === "e" ||
-//                 e.key === "f" ||
-//                 e.key === "g" ||
-//                 e.key === "h" ||
-//                 e.key === "i" ||
-//                 e.key === "j" ||
-//                 e.key === "k" ||
-//                 e.key === "l" ||
-//                 e.key === "m" ||
-//                 e.key === "n" ||
-//                 e.key === "ñ" ||
-//                 e.key === "o" ||
-//                 e.key === "p" ||
-//                 e.key === "q" ||
-//                 e.key === "r" ||
-//                 e.key === "s" ||
-//                 e.key === "t" ||
-//                 e.key === "u" ||
-//                 e.key === "v" ||
-//                 e.key === "w" ||
-//                 e.key === "x" ||
-//                 e.key === "y" ||
-//                 e.key === "z"
-//                 ) {
-//                 clickButtonEl(e.key);
-//                 }
-//             }
-//         });
-// // //}
 
+        window.addEventListener("keydown", (e) => {
+                if (
+                e.key === "a" ||
+                e.key === "b" ||
+                e.key === "c" ||
+                e.key === "d" ||
+                e.key === "e" ||
+                e.key === "f" ||
+                e.key === "g" ||
+                e.key === "h" ||
+                e.key === "i" ||
+                e.key === "j" ||
+                e.key === "k" ||
+                e.key === "l" ||
+                e.key === "m" ||
+                e.key === "n" ||
+                e.key === "ñ" ||
+                e.key === "o" ||
+                e.key === "p" ||
+                e.key === "q" ||
+                e.key === "r" ||
+                e.key === "s" ||
+                e.key === "t" ||
+                e.key === "u" ||
+                e.key === "v" ||
+                e.key === "w" ||
+                e.key === "x" ||
+                e.key === "y" ||
+                e.key === "z"
+                ) {
+                clickButtonEl(e.key);
+                }
+        });
 
-// function keyPadRemove(){
-//     window.removeEventListener("keydown", (e))
-//     console.log("eliminado")
-// }
-
-// function clickButtonEl(key) {
-//     buttons1.forEach((button) => {
-//         if(mainGame.matches("notShow")==false){
-//             if (button.innerText === key.toUpperCase()) {
-//                 console.log(key.toUpperCase());
-//                 button.click();
-//             }
-//         }
-//     });
-// }
-// function clickOperation(key) {
-//     operator.forEach((operation) => {
-//     if (operation.innerText === key) {
-//         operation.click();
-//     }
-//     });
-// }
-// function clickEqual() {
-//     equal.click();
-// }
-
-
-
-
-// const HISTORIC_KEY = "historic";
-
-// let usersList = document.getElementById("historicList");
-// let btnAdd = document.getElementById("btnAdd");
-
-// let historicList = [];
-
-// window.onload = (e) => {
-//   initDOMRefs();
-//   historicList = [];
-
-//   if (localStorage.getItem(HISTORIC_KEY) !== null) {
-//     historicList = JSON.parse(localStorage.getItem(HISTORIC_KEY));
-//     updateList(historicList);
-//   }
-// };
-
-// function initDOMRefs() {
-//   usersList = document.getElementById("historicList");
-//   btnAdd = document.getElementById("btnAdd");
-//   btnAdd.addEventListener("click", (e) => {
-//     addNewUser();
-//   });
-// }
-
-// function createListElement({ username, score }) {
-//   const newListItem = document.createElement("li");
-//   newListItem.innerText = "Username: " + username + "\nScore: " + score;
-//   usersList.appendChild(newListItem);
-// }
-
-// function updateList(items) {
-//   usersList.innerHTML = null;
-//   items.forEach((i) => {
-//     createListElement({ username: i.username, score: i.score });
-//   });
-// }
-
-// function addNewUser() {
-//   const newUser = { username: "John", score: 100 };
-//   historicList.push(newUser);
-//   updateList(historicList);
-//   localStorage.setItem(HISTORIC_KEY, JSON.stringify(historicList));
-// }
-
-//RANKING
-
-// let ranking1=document.querySelector("#ranking-1");
-// let ranking2=document.querySelector("#ranking-2");
-// let ranking3=document.querySelector("#ranking-3");
-// let ranking4=document.querySelector("#ranking-4");
-
-// let ranking1Time=document.querySelector("#ranking-1-time");
-// let ranking2Time=document.querySelector("#ranking-2-time");
-// let ranking3Time=document.querySelector("#ranking-3-time");
-// let ranking4Time=document.querySelector("#ranking-4-time");
-
-
-// function printScore(){
-//     userScoreOr();
-//     ranking1.innerText=userHistoric[0].name;
-//     ranking1Time.innerText=userHistoric[0].score;
-//     ranking2.innerText=userHistoric[1].name;
-//     ranking2Time.innerText=userHistoric[1].score;
-//     ranking3.innerText=userHistoric[2].name;
-//     ranking3Time.innerText=userHistoric[2].score;
-//     ranking4.innerText=userHistoric[3].name;
-//     ranking4Time.innerText=userHistoric[3].score;
-// }
-
-//userHistoric.push(newUser);
-
-
-
-// buttons.forEach(btn => {
-//     btn.addEventListener("click",(e)=> {
-//         if (e.target.matches(".buttons")){
-//             buttonValue=e.target.innerText;
-//             console.log(wordSplit)
-//             if(wordSplit.includes(buttonValue)||wordSplit.includes(buttonValue.toLowerCase())){
-//                 e.target.classList.add("invisible");
-//                 console.log("yes")
-//                 for (i in wordSplit){
-//                     if(wordSplit[i]==buttonValue||wordSplit[i]==buttonValue.toLowerCase()){
-//                         switch (i) {
-//                             case "0":
-//                                 document.getElementById("word-guess-0").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "1":
-//                                 document.getElementById("word-guess-1").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "2":
-//                                 document.getElementById("word-guess-2").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "3":
-//                                 document.getElementById("word-guess-3").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "4":
-//                                 document.getElementById("word-guess-4").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "5":
-//                                 document.getElementById("word-guess-5").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "6":
-//                                 document.getElementById("word-guess-6").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "7":
-//                                 document.getElementById("word-guess-7").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "8":
-//                                 document.getElementById("word-guess-8").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "9":
-//                                 document.getElementById("word-guess-9").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                             case "10":
-//                                 document.getElementById("word-guess-10").classList.remove("invisible");
-//                                 counterWin++;
-//                                 break;
-//                         }
-//                        // return; lo quito por si se repite la letra
-//                     }
-//                 }
-//             }else{
-//                 e.target.classList.add("invisible");
-//                 hangmanPicturesArraySum()
-//                 hangmanPictures.src=hangmanPicturesSrc;
-//             }
-//         }
-//         WinOrLooseFun()
-//     })
-// });
+function clickButtonEl(key) {
+    let buttons2= document.querySelectorAll(".buttons")
+    buttons2.forEach((button) => {
+            if (button.innerText == key.toUpperCase()) {
+                button.click();
+            }
+    });
+}

@@ -114,13 +114,13 @@ form{
 
 
 /*Game Page*/
-#all-buttons div{
+#all-buttons{
     display: grid;
     grid-template-columns: repeat(14, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-row: auto;
 }
-#all-buttons div button {
+#all-buttons button {
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     margin: 10px;
@@ -129,7 +129,7 @@ form{
     border-radius: 10px;
     height: 40px;
 }
-#all-buttons div button:hover {
+#all-buttons button:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
     margin: 10px;
