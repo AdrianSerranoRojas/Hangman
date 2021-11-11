@@ -79,7 +79,7 @@ function clearDisplayScores(){
     document.getElementById("hms").innerHTML=" ";
 }
 function showDisplayScores(){
-    document.querySelector("#currently-playing-name").innerText=userName.value;
+    document.querySelector("#currently-playing-name").innerText=userName.value + " is currently playing";
     document.getElementById("hms").innerHTML="00:00:00";
 }
 //Objects
