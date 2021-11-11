@@ -1,4 +1,4 @@
-*{box-sizing:border-box;padding:0;}
+*{box-sizing:border-box;}
 
 :root {
     --main-bg-color: #fff;
@@ -177,6 +177,7 @@ form{
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin: 20px;
+    border-top: solid black 1px;
 }
 #score-difficulty {
     display: grid;
@@ -189,14 +190,15 @@ ol{
     height: 30px;
 }
 li {
-    border-top: solid black 1px;
-    padding: 10px;
+    border-bottom: solid black 1px;
+    margin-right: 10px;
 }
 #nameOfUser {
 font-weight: bold;
+margin-top: 4px;
 }
 #nameOfScore {
-
+    margin-bottom: 15px;
 }
 #display-small h1 {
     text-align: center;
@@ -211,6 +213,14 @@ font-weight: bold;
     color: rgb(120, 120, 120);
     text-align: left;
     margin-left: 10%;
+}
+#display-small h3{
+    margin: 0px;
+}
+#score-difficulty h4 {
+    margin:0px;
+    margin-left: 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 .ranking-time{
     text-align: left;

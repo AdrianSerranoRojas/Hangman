@@ -221,21 +221,63 @@ function restartFun(){
 var wordsEasy = [
     'Rock',
     'King',
-    'Good'];
+    'Good',
+    "Baby",
+    "Blue",
+    "Bomb",
+    "call",
+    "card",
+    "exit",
+    "fish",
+    "game",
+    "hear",
+    "life",
+    "menu",
+    "pain",
+    "tank",
+    "zero"
+];
 
 
     //Medium
 var wordsMedium = [
     'Space',
     'Mouse',
-    'Pasta'];
+    'Pasta',
+    'seven',
+    'world',
+    'happy',
+    'green',
+    'party',
+    'piano',
+    'sugar',
+    'earth',
+    'house',
+    'dream',
+    'river',
+    'woman',
+    'mouth'
+];
 
 
     //Hard
 var wordsHard = [
     'Nightmare',
     'Keyboard',
-    'Potatoe'];
+    'Potatoe',
+    'ability',
+    'compare',
+    'culture',
+    'mission',
+    'criminal',
+    'document',
+    'memorial',
+    'survival',
+    'vertical',
+    'accept',
+    'garden',
+    'prison'
+];
 
 
 //Choose Difficulty
