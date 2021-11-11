@@ -202,7 +202,7 @@ function historyClearing(){
 
 let restartButtonWin = document.getElementById("again-button")
 let restartButtonLose = document.getElementById("again-button-lose")
-restartButtonWin.addEventListener("click",restartFun)
+//restartButtonWin.addEventListener("click",restartFun)
 restartButtonLose.addEventListener("click",restartFun)
 let buttons1=document.getElementsByClassName("buttons")
 
@@ -309,7 +309,7 @@ function gameHard() {
     userDiff = "hard";
 }
 //counter to win or loose
-let winMessage = document.getElementById("win-message")
+//let winMessage = document.getElementById("win-message")
 let loseMessage = document.getElementById("lose-message")
 let counterWin = 0;
 const winContainer = document.getElementById("youWinContainer")
@@ -318,13 +318,12 @@ const loseContainer = document.getElementById("youLoseContainer")
 function WinOrLooseFun(){
     if(counterWin>=wordSplit.length){
         mainGame.classList.add("notShow")
-        winContainer.classList.remove("notShow")
         assignName();
         stop();
         removeButtons()
         deleteWordSplitFun()
-        winMessage.innerHTML = userNameV + " you won in " + userStart
         clearDisplayScores()
+        createYouWinPage()
     }
     if(contadorI>=6){
         mainGame.classList.add("notShow")
@@ -443,4 +442,32 @@ function clickButtonEl(key) {
                 button.click();
             }
     });
+}
+
+const displayBig = document.getElementById("display-big")
+function createYouWinPage(){
+    let divContainer = document.createElement("div");
+    divContainer.setAttribute("id","youWinContainer");
+    displayBig.appendChild(divContainer);
+
+    let h1YouWin = document.createElement("h1");
+    h1YouWin.setAttribute("id","you-won");
+    h1YouWin.textContent = "You won!! 🎉🥳"
+    divContainer.appendChild(h1YouWin);
+
+    let h2YouWin = document.createElement("h2");
+    h2YouWin.setAttribute("id","win-message");
+    h2YouWin.innerHTML = userNameV + " you won in " + userStart
+    divContainer.appendChild(h2YouWin);
+
+    let buttonYouWin = document.createElement("button");
+    buttonYouWin.setAttribute("id","again-button");
+    buttonYouWin.textContent = "Play again";
+    divContainer.appendChild(buttonYouWin);
+}
+
+function clearDisplayBig(){
+    while (document.getElementById("display-big").firstChild) {
+        document.getElementById("display-big").removeChild(document.getElementById("display-big").firstChild)
+    }
 }
