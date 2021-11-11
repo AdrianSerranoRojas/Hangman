@@ -13,9 +13,6 @@ easyButton.addEventListener("click", gameEasy)
 mediumButton.addEventListener("click", gameMedium)
 hardButton.addEventListener("click", gameHard)
 //Game
-var wordsEasy = ['Rock','King','Good'];
-var wordsMedium = ['Space','Mouse','Pasta'];
-var wordsHard = ['Nightmare','Keyboard','Potatoe'];
 const fragment = document.createDocumentFragment()
 let contadorI=0;
 const hangmanPictures=document.querySelector("#hangman-pictures")
@@ -230,85 +227,6 @@ function restartFun(){
     hangmanPictures.src=hangmanPicturesSrc;
     wordSplit="";
 }
-
-//random words
-var wordsEasy = [
-    'Rock',
-    'King',
-    'Good',
-    "Baby",
-    "Blue",
-    "Bomb",
-    "call",
-    "card",
-    "exit",
-    "fish",
-    "game",
-    "hear",
-    "life",
-    "menu",
-    "pain",
-    "tank",
-    "zero"
-];
-
-    //Medium
-var wordsMedium = [
-    'Space',
-    'Mouse',
-    'Pasta',
-    'seven',
-    'world',
-    'happy',
-    'green',
-    'party',
-    'piano',
-    'sugar',
-    'earth',
-    'house',
-    'dream',
-    'river',
-    'woman',
-    'mouth'
-];
-
-    //Hard
-var wordsHard = [
-    'Nightmare',
-    'Keyboard',
-    'Potatoe',
-    'ability',
-    'compare',
-    'culture',
-    'mission',
-    'criminal',
-    'document',
-    'memorial',
-    'survival',
-    'vertical',
-    'accept',
-    'garden',
-    'prison'
-];
-
-//Choose Difficulty
-var easyButton = document.getElementById("easy")
-var mediumButton = document.getElementById("medium")
-var hardButton = document.getElementById("hard")
-
-easyButton.addEventListener("click", gameEasy)
-mediumButton.addEventListener("click", gameMedium)
-hardButton.addEventListener("click", gameHard)
-
-var wordGame = document.getElementById("word-guess")
-
-var wordGame1="";
-let wordSplit;
-let wordSplitcontainer = document.querySelector("#word-split-container")
-let wordSplitDiv = document.getElementsByClassName("underline")
-let wordSplitI;
-let wordSplitX;
-
 function wordSplitFun(){
     wordSplit = wordGame1.split("");
 for (i in wordSplit){
@@ -486,3 +404,62 @@ function clickButtonEl(key) {
             }
     });
 }
+//random words
+var wordsEasy = [
+    'Rock',
+    'King',
+    'Good',
+    "Baby",
+    "Blue",
+    "Bomb",
+    "call",
+    "card",
+    "exit",
+    "fish",
+    "game",
+    "hear",
+    "life",
+    "menu",
+    "pain",
+    "tank",
+    "zero"
+];
+
+    //Medium
+var wordsMedium = [
+    'Space',
+    'Mouse',
+    'Pasta',
+    'seven',
+    'world',
+    'happy',
+    'green',
+    'party',
+    'piano',
+    'sugar',
+    'earth',
+    'house',
+    'dream',
+    'river',
+    'woman',
+    'mouth'
+];
+
+    //Hard
+var wordsHard = [
+    'Nightmare',
+    'Keyboard',
+    'Potatoe',
+    'ability',
+    'compare',
+    'culture',
+    'mission',
+    'criminal',
+    'document',
+    'memorial',
+    'survival',
+    'vertical',
+    'accept',
+    'garden',
+    'prison'
+];
